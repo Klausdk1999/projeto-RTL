@@ -1,0 +1,601 @@
+% !TeX program = pdflatex
+% !TeX encoding = utf8
+\documentclass[12pt,oneside,openright,a4paper,brazil]{abntex2}
+
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{indentfirst}
+\usepackage{microtype}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{listings}
+\usepackage{listingsutf8}
+\usepackage{mathtools}
+
+\definecolor{codegray}{gray}{0.95}
+\definecolor{codeborder}{gray}{0.8}
+\definecolor{primaryblue}{RGB}{0,62,116}
+
+\setlength{\parindent}{1.25cm}
+\setlength{\parskip}{0.15cm}
+
+\newcommand{\includeplaceholder}[2]{%
+  \IfFileExists{#1}{\includegraphics[width=\textwidth]{#1}}{%
+    \fbox{\parbox[c][6cm][c]{0.9\textwidth}{\centering #2\\[0.5cm]\footnotesize Substituir por \texttt{\detokenize{#1}}}}}}
+
+\newcommand{\code}[1]{\texttt{\detokenize{#1}}}
+
+\lstdefinestyle{codestyle}{
+  backgroundcolor=\color{codegray},
+  frame=single,
+  rulecolor=\color{codeborder},
+  basicstyle=\ttfamily\small,
+  keywordstyle=\color{primaryblue},
+  commentstyle=\color{green!40!black},
+  stringstyle=\color{orange!70!black},
+  numbers=left,
+  numberstyle=\tiny,
+  stepnumber=1,
+  numbersep=10pt,
+  tabsize=2,
+  showstringspaces=false,
+  breaklines=true,
+  inputencoding=utf8,
+  columns=flexible
+}
+
+\lstset{style=codestyle}
+
+\titulo{Avaliação 3 -- Projeto RTL do Algoritmo de Máximo Divisor Comum}
+\autor{Fabricio Roskowski\\Klaus Dieter Kupper}
+\orientador{Prof. Dr. Cesar Albenes Zeferino\\Prof. Dr. Douglas Rossi Melo}
+\local{Itajaí -- SC}
+\data{Novembro de 2025}
+\instituicao{Universidade do Vale do Itajaí\\Programa de Pós-Graduação em Computação Aplicada\\Disciplina: Projeto de Sistemas Digitais}
+\preambulo{Relatório técnico apresentado como requisito parcial para a Avaliação 3 da disciplina Projeto de Sistemas Digitais, abordando o desenvolvimento RTL de um sistema digital para cálculo do Máximo Divisor Comum (MDC).}
+
+\makeindex
+
+\begin{document}
+\selectlanguage{brazil}
+\frenchspacing
+\OnehalfSpacing
+
+\imprimircapa
+\imprimirfolhaderosto*
+
+\begin{resumo}
+Este relatório descreve o desenvolvimento de um sistema digital baseado em VHDL para cálculo do Máximo Divisor Comum (MDC) entre dois operandos de 8 bits, seguindo o método de projeto RTL discutido em sala de aula. Partindo do algoritmo em linguagem C, foi derivada uma máquina de estados de alto nível, identificadas as partições de controle e caminho de dados, definidos os sinais internos com a convenção de nomenclatura solicitada e implementados os blocos VHDL correspondentes (topo, controle, caminho de dados e testbench). São apresentados os diagramas conceituais, a descrição do fluxo de dados, o planejamento de verificação com ModelSim e as orientações para síntese no Quartus Prime. Resultados de simulação e métricas de síntese serão incorporados após a execução dos experimentos.
+
+\vspace{\onelineskip}
+\noindent\textbf{Palavras-chave}: VHDL, RTL, máquina de estados, MDC.
+\end{resumo}
+
+\tableofcontents*
+\textual
+
+\chapter{Introdução}
+A Avaliação 3 da disciplina Projeto de Sistemas Digitais tem como objetivo consolidar o método de projeto RTL por meio da implementação de um algoritmo não trivial na linguagem VHDL. O algoritmo selecionado calcula o Máximo Divisor Comum (MDC) de dois operandos inteiros sem sinal de 8 bits utilizando o método de subtrações sucessivas. A especificação exige a decomposição em controle (máquina de estados) e caminho de dados, a adoção de uma convenção de nomenclatura padronizada, a verificação funcional por meio de testbenches no ModelSim e a síntese do sistema no Quartus Prime para obtenção de métricas de custo e desempenho.
+
+Este documento registra o processo completo de desenvolvimento: interpretação dos requisitos, construção da máquina de estados de alto nível a partir do algoritmo em C, identificação dos blocos de controle e processamento, definição dos sinais internos, implementação em VHDL no estilo recomendado pela Xilinx/AMD e preparação do ambiente de verificação. As seções seguintes também deixam espaço reservado para a inclusão de evidências experimentais (formas de onda e diagramas RTL) e resultados de síntese, a serem coletados posteriormente.
+
+\chapter{Especificação do Sistema}
+
+\section{Resumo do Enunciado}
+O sistema deve receber duas entradas de dados (\code{i_x} e \code{i_y}), cada uma com 8 bits, e produzir em \code{o_d} o MDC entre esses operandos. O fluxo é controlado por uma entrada de comando \code{i_go} e uma saída de status \code{o_rdy}. Enquanto \code{o_rdy = 1}, o circuito está pronto para receber um novo par de operandos; quando \code{i_go} é ativado, o circuito captura os dados, executa o algoritmo e devolve \code{o_rdy = 1} apenas após o resultado ser disponibilizado em \code{o_d}. A implementação deve ser hierárquica, com módulos separados para topo, controle e caminho de dados, seguindo a convenção de nomes indicada no enunciado (Tabela~\ref{tab:interface}).
+
+\section{Interface e Convenção de Sinais}
+A Tabela~\ref{tab:interface} apresenta um resumo das interfaces externas, enquanto a Tabela~\ref{tab:sinais-internos} registra os principais sinais internos que emergiram do processo de particionamento.
+
+\begin{table}[H]
+  \centering
+\caption{Interface externa do sistema \code{mdc_top}.}
+  \label{tab:interface}
+  \begin{tabular}{>{\bfseries}p{2.5cm}p{3cm}p{6cm}}
+    \toprule
+    Identificador & Tipo & Descrição \\
+    \midrule
+    \code{i_CLK} & Entrada (1 bit) & Clock principal do sistema. \\
+    \code{i_RSTn} & Entrada (1 bit) & Reset assíncrono ativo em nível baixo. \\
+    \code{i_GO} & Entrada (1 bit) & Pulso que inicia o processamento. \\
+    \code{i_X} & Entrada (8 bits) & Operando A sem sinal. \\
+    \code{i_Y} & Entrada (8 bits) & Operando B sem sinal. \\
+    \code{o_D} & Saída (8 bits) & Resultado do MDC após a convergência. \\
+    \code{o_RDY} & Saída (1 bit) & Indica se o módulo está pronto para nova transação. \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\begin{table}[H]
+  \centering
+  \caption{Sinais internos definidos no particionamento controle/caminho de dados.}
+  \label{tab:sinais-internos}
+  \begin{tabular}{>{\bfseries}p{3cm}p{3cm}p{6cm}}
+    \toprule
+    Sinal & Origem/Destino & Função \\
+    \midrule
+    \code{w_LD_X} & Controle $\rightarrow$ Datapath & Habilita a carga do registrador \code{r_X}. \\
+    \code{w_LD_Y} & Controle $\rightarrow$ Datapath & Habilita a carga do registrador \code{r_Y}. \\
+    \code{w_SEL_X} & Controle $\rightarrow$ Datapath & Seleciona entre entrada externa e resultado de subtração para \code{r_X}. \\
+    \code{w_SEL_Y} & Controle $\rightarrow$ Datapath & Seleciona entre entrada externa e resultado de subtração para \code{r_Y}. \\
+    \code{w_X_EQ_Y} & Datapath $\rightarrow$ Controle & Valor lógico indicando igualdade entre \code{r_X} e \code{r_Y}. \\
+    \code{w_X_LT_Y} & Datapath $\rightarrow$ Controle & Valor lógico indicando se \code{r_X < r_Y}. \\
+    \code{r_X}, \code{r_Y} & Datapath & Registradores que armazenam os valores intermediários do algoritmo. \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\chapter{Metodologia de Projeto RTL}
+
+\section{Algoritmo de Referência em C}
+O algoritmo de MDC utilizado como ponto de partida segue o método de subtrações sucessivas, incluindo a lógica de handshake com os sinais \code{i_go} e \code{o_rdy}. O código completo é apresentado na Listagem~\ref{lst:c_mdc}.
+
+\begin{lstlisting}[language=C, caption={Função de referência em C para o cálculo do MDC com handshake}, label={lst:c_mdc}]
+#include <stdint.h>
+#include <stdbool.h>
+
+static bool i_go = false;
+static uint8_t i_x = 0U;
+static uint8_t i_y = 0U;
+
+static uint8_t gcd_subtractive(uint8_t x, uint8_t y)
+{
+  while (x != y) {
+    if (x < y) {
+      y -= x;
+    } else {
+      x -= y;
+    }
+  }
+  return x;
+}
+
+int main(void)
+{
+  uint8_t o_d = 0U;
+  bool o_rdy = true;
+
+  while (true) {
+    while (!i_go) {
+      /* idle */
+    }
+
+    o_rdy = false;
+    o_d = gcd_subtractive(i_x, i_y);
+    o_rdy = true;
+  }
+}
+\end{lstlisting}
+
+\section{Derivação da Máquina de Estados}
+A partir do algoritmo, identificaram-se seis estados para o controle: \code{s_IDLE}, \code{s_LOAD}, \code{s_COMPARE}, \code{s_SUB_X}, \code{s_SUB_Y} e \code{s_DONE}. A Figura~\ref{fig:fsm-states} registra o diagrama de estados desenhado manualmente (imagem fornecida em \code{media/states.jpg}), enquanto a Tabela~\ref{tab:fsm-transicoes} detalha as transições e saídas relevantes.
+
+\begin{figure}[H]
+  \centering
+  \includeplaceholder{media/states.jpg}{Reservar espaço para diagrama de estados da FSM}
+  \caption{Diagrama preliminar da máquina de estados de controle.}
+  \label{fig:fsm-states}
+\end{figure}
+
+\begin{table}[H]
+  \centering
+  \caption{Tabela de transições da FSM de controle.}
+  \label{tab:fsm-transicoes}
+  \begin{tabular}{>{\bfseries}p{2.5cm}p{3.5cm}p{2.5cm}p{2.5cm}}
+    \toprule
+    Estado & Ação principal & Condição & Próximo estado \\
+    \midrule
+    \code{s_IDLE} & \code{o_RDY = 1} & \code{i_GO = 1} & \code{s_LOAD} \\
+                  &                  & caso contrário & \code{s_IDLE} \\
+    \code{s_LOAD} & Carrega \code{r_X} e \code{r_Y} & -- & \code{s_COMPARE} \\
+    \code{s_COMPARE} & Avalia \code{r_X} e \code{r_Y} & \code{w_X_EQ_Y = 1} & \code{s_DONE} \\
+                     &                                & \code{w_X_LT_Y = 1} & \code{s_SUB_Y} \\
+                     &                                & demais casos & \code{s_SUB_X} \\
+    \code{s_SUB_X} & Atualiza \code{r_X} com \code{r_X - r_Y} & -- & \code{s_COMPARE} \\
+    \code{s_SUB_Y} & Atualiza \code{r_Y} com \code{r_Y - r_X} & -- & \code{s_COMPARE} \\
+    \code{s_DONE} & \code{o_RDY = 1}, mantém \code{o_D} & \code{i_GO = 0} & \code{s_IDLE} \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\section{Particionamento do Caminho de Dados}
+O caminho de dados contém dois registradores (\code{r_X} e \code{r_Y}), dois blocos de subtração e multiplexadores de entrada. Os subprodutos das subtrações (\code{w_SUB_XY = r_X - r_Y} e \code{w_SUB_YX = r_Y - r_X}) são selecionados pelo controle para atualizar o registrador apropriado, evitando underflow por meio da lógica de decisão da FSM. As comparações de igualdade (\code{w_X_EQ_Y}) e menor (\code{w_X_LT_Y}) são calculadas continuamente e alimentam o bloco de controle.
+
+\chapter{Arquitetura RTL Proposta}
+
+\section{Visão Geral}
+A Figura~\ref{fig:rtl-diagram} apresenta o diagrama RTL em alto nível, destacando a interação entre o bloco de controle (\code{mdc_control}) e o caminho de dados (\code{mdc_datapath}). As setas são etiquetadas com os sinais definidos na Tabela~\ref{tab:sinais-internos}.
+
+\begin{figure}[H]
+  \centering
+  \includeplaceholder{media/mdc_diagram_example.png}{Reservar espaço para o diagrama RTL (controle + caminho de dados)}
+  \caption{Particionamento em controle e caminho de dados do sistema MDC.}
+  \label{fig:rtl-diagram}
+\end{figure}
+
+\section{Bloco de Controle}
+O bloco \code{mdc_control} é responsável por sequenciar o algoritmo, garantindo que apenas operações válidas de subtração sejam realizadas. O uso de estados explícitos facilita a inclusão de novas condições de parada (por exemplo, detecção de operandos nulos) sem alterar o caminho de dados. As saídas \code{w_LD_X}, \code{w_LD_Y}, \code{w_SEL_X} e \code{w_SEL_Y} são exclusivamente geradas pelo controle e utilizadas como sinais de habilitação e seleção dentro do datapath.
+
+\section{Caminho de Dados}
+O caminho de dados mantém os operandos em registradores e atualiza seus valores com base na decisão do controle. As subtrações são realizadas em paralelo, permitindo que o controlador selecione o resultado correto com atraso mínimo. O resultado final é exposto diretamente em \code{o_result}, que é repassado ao módulo topo.
+
+\chapter{Implementação em VHDL}
+Os códigos foram escritos seguindo o guia de estilo da avaliação: palavras reservadas em minúsculas, sinais em maiúsculas com prefixos (\code{i_}, \code{o_}, \code{w_}, \code{r_}), tabulação de dois espaços e comentários em inglês para evitar problemas de codificação.
+
+\section{Módulo Topo}
+A Listagem~\ref{lst:vhdl_top} mostra o módulo topo \code{mdc_top}, responsável por conectar os blocos de controle e caminho de dados e disponibilizar a interface externa.
+
+\begin{lstlisting}[language=VHDL, caption={Módulo topo do sistema MDC}, label={lst:vhdl_top}]
+library ieee;
+use ieee.std_logic_1164.all;
+
+entity mdc_top is
+  port (
+    i_clk  : in  std_logic;
+    i_rstn : in  std_logic;
+    i_go   : in  std_logic;
+    i_x    : in  std_logic_vector(7 downto 0);
+    i_y    : in  std_logic_vector(7 downto 0);
+    o_d    : out std_logic_vector(7 downto 0);
+    o_rdy  : out std_logic
+  );
+end entity mdc_top;
+
+architecture rtl of mdc_top is
+  signal w_LD_X   : std_logic;
+  signal w_LD_Y   : std_logic;
+  signal w_SEL_X  : std_logic;
+  signal w_SEL_Y  : std_logic;
+  signal w_X_EQ_Y : std_logic;
+  signal w_X_LT_Y : std_logic;
+  signal w_RESULT : std_logic_vector(7 downto 0);
+begin
+
+  u_datapath : entity work.mdc_datapath
+    port map (
+      i_clk    => i_clk,
+      i_rstn   => i_rstn,
+      i_x      => i_x,
+      i_y      => i_y,
+      i_ld_x   => w_LD_X,
+      i_ld_y   => w_LD_Y,
+      i_sel_x  => w_SEL_X,
+      i_sel_y  => w_SEL_Y,
+      o_x_eq_y => w_X_EQ_Y,
+      o_x_lt_y => w_X_LT_Y,
+      o_result => w_RESULT
+    );
+
+  u_control : entity work.mdc_control
+    port map (
+      i_clk    => i_clk,
+      i_rstn   => i_rstn,
+      i_go     => i_go,
+      i_x_eq_y => w_X_EQ_Y,
+      i_x_lt_y => w_X_LT_Y,
+      o_ld_x   => w_LD_X,
+      o_ld_y   => w_LD_Y,
+      o_sel_x  => w_SEL_X,
+      o_sel_y  => w_SEL_Y,
+      o_rdy    => o_rdy
+    );
+
+  o_d <= w_RESULT;
+
+end architecture rtl;
+\end{lstlisting}
+
+\section{Máquina de Controle}
+A Listagem~\ref{lst:vhdl_control} apresenta a implementação da FSM derivada na Tabela~\ref{tab:fsm-transicoes}. Os estados são codificados em um tipo enumerado \code{t_STATE}, e os sinais de controle seguem diretamente a tabela de transições.
+
+\begin{lstlisting}[language=VHDL, caption={Implementação da FSM de controle}, label={lst:vhdl_control}]
+library ieee;
+use ieee.std_logic_1164.all;
+
+entity mdc_control is
+  port (
+    i_clk    : in  std_logic;
+    i_rstn   : in  std_logic;
+    i_go     : in  std_logic;
+    i_x_eq_y : in  std_logic;
+    i_x_lt_y : in  std_logic;
+    o_ld_x   : out std_logic;
+    o_ld_y   : out std_logic;
+    o_sel_x  : out std_logic;
+    o_sel_y  : out std_logic;
+    o_rdy    : out std_logic
+  );
+end entity mdc_control;
+
+architecture rtl of mdc_control is
+  type t_STATE is (s_IDLE, s_LOAD, s_COMPARE, s_SUB_X, s_SUB_Y, s_DONE);
+  signal r_STATE      : t_STATE;
+  signal w_NEXT_STATE : t_STATE;
+
+  signal w_LD_X   : std_logic;
+  signal w_LD_Y   : std_logic;
+  signal w_SEL_X  : std_logic;
+  signal w_SEL_Y  : std_logic;
+  signal w_RDY    : std_logic;
+begin
+
+  p_STATE_REG : process(i_clk, i_rstn)
+  begin
+    if i_rstn = '0' then
+      r_STATE <= s_IDLE;
+    elsif rising_edge(i_clk) then
+      r_STATE <= w_NEXT_STATE;
+    end if;
+  end process p_STATE_REG;
+
+  p_STATE_NEXT : process(r_STATE, i_go, i_x_eq_y, i_x_lt_y)
+  begin
+    w_NEXT_STATE <= r_STATE;
+    case r_STATE is
+      when s_IDLE =>
+        if i_go = '1' then
+          w_NEXT_STATE <= s_LOAD;
+        end if;
+      when s_LOAD =>
+        w_NEXT_STATE <= s_COMPARE;
+      when s_COMPARE =>
+        if i_x_eq_y = '1' then
+          w_NEXT_STATE <= s_DONE;
+        elsif i_x_lt_y = '1' then
+          w_NEXT_STATE <= s_SUB_Y;
+        else
+          w_NEXT_STATE <= s_SUB_X;
+        end if;
+      when s_SUB_X =>
+        w_NEXT_STATE <= s_COMPARE;
+      when s_SUB_Y =>
+        w_NEXT_STATE <= s_COMPARE;
+      when s_DONE =>
+        if i_go = '0' then
+          w_NEXT_STATE <= s_IDLE;
+        end if;
+    end case;
+  end process p_STATE_NEXT;
+
+  p_OUTPUTS : process(r_STATE)
+  begin
+    w_LD_X  <= '0';
+    w_LD_Y  <= '0';
+    w_SEL_X <= '0';
+    w_SEL_Y <= '0';
+    w_RDY   <= '0';
+
+    case r_STATE is
+      when s_IDLE =>
+        w_RDY <= '1';
+      when s_LOAD =>
+        w_LD_X  <= '1';
+        w_LD_Y  <= '1';
+      when s_COMPARE =>
+        null;
+      when s_SUB_X =>
+        w_LD_X  <= '1';
+        w_SEL_X <= '1';
+      when s_SUB_Y =>
+        w_LD_Y  <= '1';
+        w_SEL_Y <= '1';
+      when s_DONE =>
+        w_RDY <= '1';
+    end case;
+  end process p_OUTPUTS;
+
+  o_ld_x  <= w_LD_X;
+  o_ld_y  <= w_LD_Y;
+  o_sel_x <= w_SEL_X;
+  o_sel_y <= w_SEL_Y;
+  o_rdy   <= w_RDY;
+
+end architecture rtl;
+\end{lstlisting}
+
+\section{Caminho de Dados}
+A Listagem~\ref{lst:vhdl_datapath} contém a descrição do caminho de dados. Os cálculos são realizados com a biblioteca \code{numeric_std}, garantindo aritmética sem sinal consistente com a especificação.
+
+\begin{lstlisting}[language=VHDL, caption={Descrição do caminho de dados}, label={lst:vhdl_datapath}]
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+
+entity mdc_datapath is
+  port (
+    i_clk    : in  std_logic;
+    i_rstn   : in  std_logic;
+    i_x      : in  std_logic_vector(7 downto 0);
+    i_y      : in  std_logic_vector(7 downto 0);
+    i_ld_x   : in  std_logic;
+    i_ld_y   : in  std_logic;
+    i_sel_x  : in  std_logic;
+    i_sel_y  : in  std_logic;
+    o_x_eq_y : out std_logic;
+    o_x_lt_y : out std_logic;
+    o_result : out std_logic_vector(7 downto 0)
+  );
+end entity mdc_datapath;
+
+architecture rtl of mdc_datapath is
+  signal r_X      : std_logic_vector(7 downto 0);
+  signal r_Y      : std_logic_vector(7 downto 0);
+  signal w_NEXT_X : std_logic_vector(7 downto 0);
+  signal w_NEXT_Y : std_logic_vector(7 downto 0);
+  signal w_SUB_XY : std_logic_vector(7 downto 0);
+  signal w_SUB_YX : std_logic_vector(7 downto 0);
+begin
+
+  w_SUB_XY <= std_logic_vector(unsigned(r_X) - unsigned(r_Y));
+  w_SUB_YX <= std_logic_vector(unsigned(r_Y) - unsigned(r_X));
+
+  with i_sel_x select
+    w_NEXT_X <= i_x      when '0',
+                w_SUB_XY when others;
+
+  with i_sel_y select
+    w_NEXT_Y <= i_y      when '0',
+                w_SUB_YX when others;
+
+  p_REGISTERS : process(i_clk, i_rstn)
+  begin
+    if i_rstn = '0' then
+      r_X <= (others => '0');
+      r_Y <= (others => '0');
+    elsif rising_edge(i_clk) then
+      if i_ld_x = '1' then
+        r_X <= w_NEXT_X;
+      end if;
+      if i_ld_y = '1' then
+        r_Y <= w_NEXT_Y;
+      end if;
+    end if;
+  end process p_REGISTERS;
+
+  o_x_eq_y <= '1' when r_X = r_Y else '0';
+  o_x_lt_y <= '1' when unsigned(r_X) < unsigned(r_Y) else '0';
+  o_result <= r_X;
+
+end architecture rtl;
+\end{lstlisting}
+
+\section{Testbench}
+O testbench da Listagem~\ref{lst:vhdl_tb} instancia o módulo topo, gera o clock, aplica vetores de teste e aguarda o término de cada transação antes de iniciar a próxima. As assertivas de verificação podem ser ampliadas conforme necessário.
+
+\begin{lstlisting}[language=VHDL, caption={Testbench funcional para o sistema MDC}, label={lst:vhdl_tb}]
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+
+entity mdc_tb is
+end entity mdc_tb;
+
+architecture sim of mdc_tb is
+  constant c_CLK_PERIOD : time := 10 ns;
+
+  signal w_CLK  : std_logic := '0';
+  signal w_RSTn : std_logic := '0';
+  signal w_GO   : std_logic := '0';
+  signal w_X    : std_logic_vector(7 downto 0) := (others => '0');
+  signal w_Y    : std_logic_vector(7 downto 0) := (others => '0');
+  signal w_D    : std_logic_vector(7 downto 0);
+  signal w_RDY  : std_logic;
+begin
+
+  u_dut : entity work.mdc_top
+    port map (
+      i_clk  => w_CLK,
+      i_rstn => w_RSTn,
+      i_go   => w_GO,
+      i_x    => w_X,
+      i_y    => w_Y,
+      o_d    => w_D,
+      o_rdy  => w_RDY
+    );
+
+  p_CLK : process
+  begin
+    w_CLK <= '0';
+    wait for c_CLK_PERIOD / 2;
+    w_CLK <= '1';
+    wait for c_CLK_PERIOD / 2;
+  end process p_CLK;
+
+  p_STIMULUS : process
+  begin
+    w_RSTn <= '0';
+    wait for 3 * c_CLK_PERIOD;
+    w_RSTn <= '1';
+    wait for c_CLK_PERIOD;
+
+    w_X <= std_logic_vector(to_unsigned(108, 8));
+    w_Y <= std_logic_vector(to_unsigned(84, 8));
+    wait for c_CLK_PERIOD;
+    w_GO <= '1';
+    wait for c_CLK_PERIOD;
+    w_GO <= '0';
+
+    wait until w_RDY = '1';
+    wait for 2 * c_CLK_PERIOD;
+
+    w_X <= std_logic_vector(to_unsigned(27, 8));
+    w_Y <= std_logic_vector(to_unsigned(18, 8));
+    wait for c_CLK_PERIOD;
+    w_GO <= '1';
+    wait for c_CLK_PERIOD;
+    w_GO <= '0';
+
+    wait for 60 * c_CLK_PERIOD;
+    wait;
+  end process p_STIMULUS;
+
+end architecture sim;
+\end{lstlisting}
+
+\chapter{Plano de Validação e Síntese}
+
+\section{Validação Funcional}
+A simulação será conduzida no ModelSim, utilizando o testbench descrito na Seção anterior. Estão planejadas as seguintes etapas:
+\begin{enumerate}[label=\alph*)]
+  \item Compilação dos arquivos VHDL (\code{mdc_datapath.vhd}, \code{mdc_control.vhd}, \code{mdc_top.vhd}, \code{mdc_tb.vhd}) com suporte a VHDL-2008.
+  \item Execução do testbench até que \code{o_RDY} retorne ao nível lógico alto, capturando as formas de onda relevantes (\code{i_go}, \code{i_x}, \code{i_y}, \code{o_d}, \code{o_rdy}, \code{w_X_EQ_Y}, \code{w_X_LT_Y}, \code{r_X}, \code{r_Y}).
+  \item Inclusão das figuras de forma de onda no relatório (Figura~\ref{fig:simulation-waveforms}) com marcação dos pontos de interesse.
+\end{enumerate}
+
+\begin{figure}[H]
+  \centering
+  \includeplaceholder{media/mdc_waveforms_example.png}{Reservar espaço para as formas de onda de simulação}
+  \caption{Espaço reservado para as formas de onda obtidas no ModelSim.}
+  \label{fig:simulation-waveforms}
+\end{figure}
+
+\section{Síntese e Análise RTL}
+A síntese será realizada no Quartus Prime, considerando a mesma hierarquia adotada na simulação. Após a compilação, será exportado o diagrama RTL para inclusão na Figura~\ref{fig:quartus-rtl}, bem como coletadas as métricas de utilização de recursos e frequência máxima (Tabela~\ref{tab:resource-usage}).
+
+\begin{figure}[H]
+  \centering
+  \includeplaceholder{media/mdc_quartus_rtl_example.png}{Reservar espaço para o diagrama RTL gerado pelo Quartus}
+  \caption{Espaço reservado para o diagrama RTL gerado pelo Quartus Prime.}
+  \label{fig:quartus-rtl}
+\end{figure}
+
+\begin{table}[H]
+  \centering
+  \caption{Template para registrar os custos e o desempenho após a síntese.}
+  \label{tab:resource-usage}
+  \begin{tabular}{>{\bfseries}p{6cm}p{3cm}p{3cm}}
+    \toprule
+    Métrica & Valor & Observações \\
+    \midrule
+    Número de LCs & & \\
+    Número de LUTs & & \\
+    Número de FFs & & \\
+    Frequência máxima (Fmax) & & \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\chapter{Conclusões Parciais}
+O projeto encontra-se em estágio funcional, com os blocos de controle e datapath implementados e integrados. A metodologia de projeto RTL foi seguida rigorosamente: partiu-se do algoritmo em C, derivou-se uma FSM de alto nível, identificaram-se os sinais necessários e codificaram-se os módulos em VHDL com a convenção estabelecida. As próximas atividades concentram-se na coleta de evidências experimentais (simulações e síntese) e no refinamento do relatório com base nesses resultados.
+
+\postextual
+\phantomsection
+\addcontentsline{toc}{chapter}{Referências}
+\begin{thebibliography}{9}
+\bibitem{vhdl-guide} Xilinx. \textit{VHDL Coding Style Guidelines}. AMD Adaptive Computing Documentation, 2023.
+\bibitem{quartus} Intel. \textit{Quartus Prime Standard Edition User Guide}. 2024.
+\bibitem{modelsim} Siemens EDA. \textit{ModelSim Simulation User Manual}. 2024.
+\end{thebibliography}
+
+\end{document}
+
+

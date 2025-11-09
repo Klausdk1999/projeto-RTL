@@ -1,0 +1,36 @@
+\changetocdepth {4}
+\babel@toc {brazil}{}\relax 
+\babel@toc {brazil}{}\relax 
+\setlength {\cftchapterindent }{\cftlastnumwidth } \setlength {\cftchapternumwidth }{2em}
+\setlength {\cftchapterindent }{0em} \setlength {\cftchapternumwidth }{\cftlastnumwidth }
+\contentsline {chapter}{\chapternumberline {1}\MakeTextUppercase []{Introdução}}{4}{chapter.1}%
+\setlength {\cftchapterindent }{0em} \setlength {\cftchapternumwidth }{\cftlastnumwidth }
+\contentsline {chapter}{\chapternumberline {2}\MakeTextUppercase []{Especificação do Sistema}}{5}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Resumo do Enunciado}{5}{section.2.1}%
+\contentsline {section}{\numberline {2.2}Interface e Convenção de Sinais}{5}{section.2.2}%
+\setlength {\cftchapterindent }{0em} \setlength {\cftchapternumwidth }{\cftlastnumwidth }
+\contentsline {chapter}{\chapternumberline {3}\MakeTextUppercase []{Metodologia de Projeto RTL}}{7}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Algoritmo de Referência em C}{7}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Derivação da Máquina de Estados}{8}{section.3.2}%
+\contentsline {section}{\numberline {3.3}Particionamento do Caminho de Dados}{9}{section.3.3}%
+\setlength {\cftchapterindent }{0em} \setlength {\cftchapternumwidth }{\cftlastnumwidth }
+\contentsline {chapter}{\chapternumberline {4}\MakeTextUppercase []{Arquitetura RTL Proposta}}{10}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Visão Geral}{10}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Bloco de Controle}{10}{section.4.2}%
+\contentsline {section}{\numberline {4.3}Caminho de Dados}{10}{section.4.3}%
+\setlength {\cftchapterindent }{0em} \setlength {\cftchapternumwidth }{\cftlastnumwidth }
+\contentsline {chapter}{\chapternumberline {5}\MakeTextUppercase []{Implementação em VHDL}}{11}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Módulo Topo}{11}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Máquina de Controle}{12}{section.5.2}%
+\contentsline {section}{\numberline {5.3}Caminho de Dados}{15}{section.5.3}%
+\contentsline {section}{\numberline {5.4}Testbench}{17}{section.5.4}%
+\setlength {\cftchapterindent }{0em} \setlength {\cftchapternumwidth }{\cftlastnumwidth }
+\contentsline {chapter}{\chapternumberline {6}\MakeTextUppercase []{Plano de Validação e Síntese}}{19}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Validação Funcional}{19}{section.6.1}%
+\contentsline {section}{\numberline {6.2}Síntese e Análise RTL}{19}{section.6.2}%
+\setlength {\cftchapterindent }{0em} \setlength {\cftchapternumwidth }{\cftlastnumwidth }
+\contentsline {chapter}{\chapternumberline {7}\MakeTextUppercase []{Conclusões Parciais}}{21}{chapter.7}%
+\vspace {\cftbeforechapterskip }
+\contentsline {chapter}{Referências}{21}{section*.13}%
+\setlength {\cftchapterindent }{\cftlastnumwidth } \setlength {\cftchapternumwidth }{2em}
+\contentsline {chapter}{\MakeTextUppercase []{Refer\^encias}}{22}{section*.16}%
