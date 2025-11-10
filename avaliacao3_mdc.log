@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.11.9)  10 NOV 2025 20:49
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.11.9)  10 NOV 2025 20:51
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -915,34 +915,34 @@ Package babel Info: 'brazil' activates 'portuges' shorthands.
 )
 \openout1 = `avaliacao3_mdc.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 68.
-LaTeX Font Info:    ... okay on input line 68.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 68.
-LaTeX Font Info:    ... okay on input line 68.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 68.
-LaTeX Font Info:    ... okay on input line 68.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 68.
-LaTeX Font Info:    ... okay on input line 68.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 68.
-LaTeX Font Info:    ... okay on input line 68.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 68.
-LaTeX Font Info:    ... okay on input line 68.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 68.
-LaTeX Font Info:    ... okay on input line 68.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 68.
-LaTeX Font Info:    ... okay on input line 68.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 68.
-LaTeX Font Info:    ... okay on input line 68.
-Package hyperref Info: Link coloring OFF on input line 68.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 69.
+LaTeX Font Info:    ... okay on input line 69.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 69.
+LaTeX Font Info:    ... okay on input line 69.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 69.
+LaTeX Font Info:    ... okay on input line 69.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 69.
+LaTeX Font Info:    ... okay on input line 69.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 69.
+LaTeX Font Info:    ... okay on input line 69.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 69.
+LaTeX Font Info:    ... okay on input line 69.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 69.
+LaTeX Font Info:    ... okay on input line 69.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 69.
+LaTeX Font Info:    ... okay on input line 69.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 69.
+LaTeX Font Info:    ... okay on input line 69.
+Package hyperref Info: Link coloring OFF on input line 69.
 \myptabbox=\box67
 \myptabboxwidth=\skip265
-LaTeX Info: Redefining \microtypecontext on input line 68.
-Package microtype Info: Applying patch `item' on input line 68.
-Package microtype Info: Applying patch `toc' on input line 68.
-Package microtype Info: Applying patch `eqnum' on input line 68.
-Package microtype Info: Applying patch `footnote' on input line 68.
-Package microtype Info: Applying patch `verbatim' on input line 68.
-LaTeX Info: Redefining \microtypesetup on input line 68.
+LaTeX Info: Redefining \microtypecontext on input line 69.
+Package microtype Info: Applying patch `item' on input line 69.
+Package microtype Info: Applying patch `toc' on input line 69.
+Package microtype Info: Applying patch `eqnum' on input line 69.
+Package microtype Info: Applying patch `footnote' on input line 69.
+Package microtype Info: Applying patch `verbatim' on input line 69.
+LaTeX Info: Redefining \microtypesetup on input line 69.
 Package microtype Info: Generating PDF output.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using default protrusion set `alltext'.
@@ -996,7 +996,7 @@ Package caption Info: listings package is loaded.
 Package caption Info: End \AtBeginDocument code.
 \c@lstlisting=\count398
 LaTeX Font Info:    Trying to load font information for T1+lmss on input line 7
-3.
+4.
  (C:\Users\Klaus\AppData\Local\Programs\MiKTeX\tex/latex/lm\t1lmss.fd
 File: t1lmss.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
@@ -1048,7 +1048,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.78 \chapter
+l.79 \chapter
              {Introdução} [1
 
 
@@ -1061,7 +1061,7 @@ Cap\'{\i }tulo 1.
 ]
 Cap\'{\i }tulo 2.
 LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 8
-4.
+5.
 (C:\Users\Klaus\AppData\Local\Programs\MiKTeX\tex/latex/lm\t1lmtt.fd
 File: t1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
@@ -1070,24 +1070,24 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 
-Overfull \hbox (2.00734pt too wide) in paragraph at lines 95--95
+Overfull \hbox (2.00734pt too wide) in paragraph at lines 96--96
 []|\T1/lmr/bx/n/12 (-20) Identificador| 
  []
 
 LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <12> not available
-(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 97.
+(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 98.
 
-Underfull \hbox (badness 10000) in paragraph at lines 116--116
+Underfull \hbox (badness 10000) in paragraph at lines 117--117
 []|\T1/lmtt/b/n/12 w_Rx_ld\T1/lmr/bx/n/12 (+20) ,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 117--117
+Underfull \hbox (badness 10000) in paragraph at lines 118--118
 []|\T1/lmtt/b/n/12 w_Rx_clr\T1/lmr/bx/n/12 (+20) ,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 118--118
+Underfull \hbox (badness 10000) in paragraph at lines 119--119
 []|\T1/lmtt/b/n/12 w_Rx_sub_ld\T1/lmr/bx/n/12 (+20) ,
  []
 
@@ -1098,7 +1098,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 118--118
 ]
 
 Package babel Info: 'brazil' activates 'portuges' shorthands.
-(babel)             Reported on input line 126.
+(babel)             Reported on input line 127.
 [4{C:/Users/Klaus/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathsy.en
 c}]
 Cap\'{\i }tulo 3.
@@ -1109,7 +1109,7 @@ File: lstlang1.sty 2024/09/23 1.10c listings language file
 File: lstmisc.sty 2024/09/23 1.10c (Carsten Heinz)
 )
 Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on i
-nput line 131.
+nput line 132.
 
 
 [5
@@ -1118,25 +1118,25 @@ nput line 131.
 <media/states.jpeg, id=127, 945.5325pt x 650.43pt>
 File: media/states.jpeg Graphic file (type jpg)
 <use media/states.jpeg>
-Package pdftex.def Info: media/states.jpeg  used on input line 173.
+Package pdftex.def Info: media/states.jpeg  used on input line 174.
 (pdftex.def)             Requested size: 455.0pt x 312.99683pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 184--185
+Underfull \hbox (badness 10000) in paragraph at lines 185--186
 []|\T1/lmr/m/n/12 (+20) Pr�ximo es-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 189--189
+Underfull \hbox (badness 10000) in paragraph at lines 190--190
 []|\T1/lmtt/m/n/12 w_X_EQ_Y =
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 190--190
+Underfull \hbox (badness 10000) in paragraph at lines 191--191
 []|\T1/lmtt/m/n/12 w_X_LT_Y =
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 194--194
+Underfull \hbox (badness 10000) in paragraph at lines 195--195
 []|\T1/lmtt/m/n/12 o_RDY = 1\T1/lmr/m/n/12 (+20) , man-
  []
 
@@ -1150,7 +1150,7 @@ Cap\'{\i }tulo 4.
 File: media/rtl_viewer_control_and_datapath.png Graphic file (type png)
 <use media/rtl_viewer_control_and_datapath.png>
 Package pdftex.def Info: media/rtl_viewer_control_and_datapath.png  used on inp
-ut line 210.
+ut line 211.
 (pdftex.def)             Requested size: 455.0pt x 231.85745pt.
 
 
@@ -1190,17 +1190,17 @@ Cap\'{\i }tulo 6.
 File: media/mdc_waveforms_example.png Graphic file (type png)
 <use media/mdc_waveforms_example.png>
 Package pdftex.def Info: media/mdc_waveforms_example.png  used on input line 59
-0.
+1.
 (pdftex.def)             Requested size: 455.0pt x 208.92209pt.
 LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 5
-98.
+99.
 (C:\Users\Klaus\AppData\Local\Programs\MiKTeX\tex/latex/lm\ts1lmr.fd
 File: ts1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 <media/states_quartus.jpg, id=549, 1026.83624pt x 448.67625pt>
 File: media/states_quartus.jpg Graphic file (type jpg)
 <use media/states_quartus.jpg>
-Package pdftex.def Info: media/states_quartus.jpg  used on input line 602.
+Package pdftex.def Info: media/states_quartus.jpg  used on input line 603.
 (pdftex.def)             Requested size: 455.0pt x 198.81479pt.
 
 
@@ -1213,30 +1213,30 @@ ia/mdc_waveforms_example.png>]
 <media/control_rtl.png, id=561, 1298.60156pt x 735.49782pt>
 File: media/control_rtl.png Graphic file (type png)
 <use media/control_rtl.png>
-Package pdftex.def Info: media/control_rtl.png  used on input line 609.
+Package pdftex.def Info: media/control_rtl.png  used on input line 610.
 (pdftex.def)             Requested size: 455.0pt x 257.69743pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 622--623
+Underfull \hbox (badness 10000) in paragraph at lines 623--624
 []|\T1/lmr/m/n/12 (+20) Dispositivo re-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 622--623
+Underfull \hbox (badness 10000) in paragraph at lines 623--624
 \T1/lmr/m/n/12 (+20) porta re-cur-sos
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 623--624
+Underfull \hbox (badness 10000) in paragraph at lines 624--625
 []|\T1/lmr/m/n/12 (+20) Combinational
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 623--624
+Underfull \hbox (badness 10000) in paragraph at lines 624--625
 \T1/lmr/m/n/12 (+20) ALUTs (Fit-ter
  []
 
 
-Underfull \hbox (badness 1939) in paragraph at lines 625--626
+Underfull \hbox (badness 1939) in paragraph at lines 626--627
 \T1/lmr/m/n/12 (+20) -- Slow 1,10 V
  []
 
@@ -1289,7 +1289,7 @@ b><C:/Users/Klaus/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr10.pfb
 <C:/Users/Klaus/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt10.pfb>
 <C:/Users/Klaus/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt12.pfb>
 
-Output written on avaliacao3_mdc.pdf (25 pages, 788814 bytes).
+Output written on avaliacao3_mdc.pdf (25 pages, 788810 bytes).
 PDF statistics:
  818 PDF objects out of 1000 (max. 8388607)
  438 named destinations out of 1000 (max. 500000)
