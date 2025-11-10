@@ -29,8 +29,8 @@
 \contentsline {section}{\numberline {6.1}Validação Funcional}{20}{section.6.1}%
 \contentsline {section}{\numberline {6.2}Síntese e Análise RTL}{20}{section.6.2}%
 \setlength {\cftchapterindent }{0em} \setlength {\cftchapternumwidth }{\cftlastnumwidth }
-\contentsline {chapter}{\chapternumberline {7}\MakeTextUppercase []{Conclusão}}{22}{chapter.7}%
+\contentsline {chapter}{\chapternumberline {7}\MakeTextUppercase []{Conclusão}}{23}{chapter.7}%
 \vspace {\cftbeforechapterskip }
-\contentsline {chapter}{Referências}{22}{section*.11}%
+\contentsline {chapter}{Referências}{23}{section*.12}%
 \setlength {\cftchapterindent }{\cftlastnumwidth } \setlength {\cftchapternumwidth }{2em}
-\contentsline {chapter}{\MakeTextUppercase []{Refer\^encias}}{23}{section*.14}%
+\contentsline {chapter}{\MakeTextUppercase []{Refer\^encias}}{24}{section*.15}%

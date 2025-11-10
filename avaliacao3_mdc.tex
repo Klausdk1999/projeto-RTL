@@ -76,9 +76,7 @@
 \textual
 
 \chapter{Introdução}
-A Avaliação 3 da disciplina Projeto de Sistemas Digitais tem como objetivo praticar o método de projeto RTL implementando em VHDL o cálculo do Máximo Divisor Comum (MDC) para operandos de 8 bits, empregando o algoritmo de subtrações sucessivas discutido em aula. O fluxo solicitado inclui: derivação da máquina de estados de controle, particionamento em controle e caminho de dados, adoção da convenção de nomenclatura do enunciado e verificação funcional no ModelSim antes da síntese no Quartus Prime.
-
-Este relatório concentra-se em documentar a solução desenvolvida e orientar a coleta das evidências finais (formas de onda e métricas de síntese). Mantivemos apenas os elementos essenciais para a entrega da avaliação: descrição da interface, FSM, arquitetura RTL, código VHDL e plano resumido de validação.
+Este relatório corresponde à Avaliação~3 da disciplina Projeto de Sistemas Digitais. A tarefa consiste em implementar em VHDL um circuito para calcular o Máximo Divisor Comum (MDC) de dois operandos de 8~bits, seguindo o procedimento trabalhado em aula: partir de uma função em C, derivar a máquina de estados, separar controle e caminho de dados, validar com ModelSim e sintetizar no Quartus Prime. Mantivemos o foco no essencial para a entrega: interface, FSM, códigos VHDL, simulações e métricas de síntese.
 
 \chapter{Especificação do Sistema}
 
@@ -168,12 +166,12 @@ int main(void)
 \end{lstlisting}
 
 \section{Derivação da Máquina de Estados}
-A partir do algoritmo, identificaram-se seis estados para o controle: \code{s_IDLE}, \code{s_LOAD}, \code{s_COMPARE}, \code{s_SUB_X}, \code{s_SUB_Y} e \code{s_DONE}. A Figura~\ref{fig:fsm-states} registra o diagrama de estados desenhado manualmente (imagem fornecida em \code{media/states.jpg}), enquanto a Tabela~\ref{tab:fsm-transicoes} detalha as transições e saídas relevantes.
+A partir do algoritmo, identificaram-se seis estados para o controle: \code{s_IDLE}, \code{s_LOAD}, \code{s_COMPARE}, \code{s_SUB_X}, \code{s_SUB_Y} e \code{s_DONE}. A Figura~\ref{fig:fsm-states} mostra o diagrama desenhado manualmente (\code{media/states.jpeg}); na Seção de síntese, a Figura~\ref{fig:fsm-states-quartus} confirma essa mesma FSM exportada pelo Quartus Prime. A Tabela~\ref{tab:fsm-transicoes} detalha as transições e saídas relevantes.
 
 \begin{figure}[H]
   \centering
-  \includeplaceholder{media/states_quartus.jpg}{Reservar espaço para diagrama de estados da FSM}
-  \caption{Diagrama da máquina de estados exportado do Quartus Prime.}
+  \includeplaceholder{media/states.jpeg}{Reservar espaço para diagrama de estados da FSM}
+  \caption{Diagrama inicial da máquina de estados elaborado manualmente.}
   \label{fig:fsm-states}
 \end{figure}
 
@@ -598,6 +596,13 @@ As formas de onda devem evidenciar: (i) o pulso de \code{i_GO} na captura dos op
 
 \section{Síntese e Análise RTL}
 A síntese foi realizada no Quartus Prime Standard utilizando a hierarquia apresentada na Figura~\ref{fig:rtl-diagram}. Após a compilação do projeto com a entidade \code{mdc_top}, foram exportados o diagrama RTL (Figuras~\ref{fig:rtl-diagram} e \ref{fig:quartus-rtl}) e as métricas de utilização de recursos incluídas na Tabela~\ref{tab:resource-usage}. A análise de temporização considerou o modelo \textit{Slow 1,10 V 85\textdegree{}C}, cujo relatório indica Fmax de 381,24~MHz para o único domínio de clock.
+
+\begin{figure}[H]
+  \centering
+  \includeplaceholder{media/states_quartus.jpg}{Reservar espaço para o diagrama de estados exportado pelo Quartus}
+  \caption{FSM sintetizada pelo Quartus Prime, confirmando a implementação VHDL.}
+  \label{fig:fsm-states-quartus}
+\end{figure}
 
 \begin{figure}[H]
   \centering
