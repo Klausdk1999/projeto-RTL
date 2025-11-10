@@ -1,0 +1,186 @@
+m255
+K4
+z2
+!s11e vcom 2020.1 2020.02, Feb 28 2020
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dD:/Mestrado/sistemas_digitais/T3/mdc
+Econtrol
+Z1 w1762700079
+Z2 DPx4 ieee 11 numeric_std 0 22 aU^R8eGcicLcUFIaBQSL>3
+Z3 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
+Z4 DPx4 ieee 14 std_logic_1164 0 22 cVAk:aDinOX8^VGI1ekP<3
+!i122 1
+R0
+Z5 8control.vhd
+Z6 Fcontrol.vhd
+l0
+L5 1
+VH4F6MSY>Bc]mh]<3kgACj3
+!s100 m@4o@GPMj;7]1HEkQG@ZA1
+Z7 OV;C;2020.1;71
+33
+Z8 !s110 1762707689
+!i10b 1
+Z9 !s108 1762707689.000000
+Z10 !s90 -reportprogress|300|-2008|control.vhd|
+Z11 !s107 control.vhd|
+!i113 1
+Z12 o-2008
+Z13 tExplicit 1 CvgOpt 0
+Artl
+R2
+R3
+R4
+Z14 DEx4 work 7 control 0 22 H4F6MSY>Bc]mh]<3kgACj3
+!i122 1
+l33
+L24 89
+VjdhBa7IDLPhO8Je=:diCo1
+!s100 QXGC^VPV8Ca8kL<:MahQz3
+R7
+33
+R8
+!i10b 1
+R9
+R10
+R11
+!i113 1
+R12
+R13
+Edatapath
+Z15 w1762700053
+R2
+R3
+R4
+!i122 0
+R0
+Z16 8datapath.vhd
+Z17 Fdatapath.vhd
+l0
+L5 1
+VJ=BFMn;i38i_WTL1Dl?MK0
+!s100 1T4M0E?<fZ?C4;mol;F0V1
+R7
+33
+R8
+!i10b 1
+R9
+Z18 !s90 -reportprogress|300|-2008|datapath.vhd|
+Z19 !s107 datapath.vhd|
+!i113 1
+R12
+R13
+Artl
+R2
+R3
+R4
+Z20 DEx4 work 8 datapath 0 22 J=BFMn;i38i_WTL1Dl?MK0
+!i122 0
+l34
+L26 51
+Vbek`4AFO5MnFZ7M0KX5KL2
+!s100 CgHbEHGeTm21FW2nO>lfn2
+R7
+33
+R8
+!i10b 1
+R9
+R18
+R19
+!i113 1
+R12
+R13
+Emdc_top
+Z21 w1762701241
+R2
+R3
+R4
+!i122 2
+R0
+Z22 8top_mdc.vhd
+Z23 Ftop_mdc.vhd
+l0
+L5 1
+VB5bd0Lb8XTaChmZF?44]82
+!s100 C=Of7^A;omJjILEZ:mBQB3
+R7
+33
+R8
+!i10b 1
+R9
+Z24 !s90 -reportprogress|300|-2008|top_mdc.vhd|
+Z25 !s107 top_mdc.vhd|
+!i113 1
+R12
+R13
+Artl
+R14
+R20
+R2
+R3
+R4
+Z26 DEx4 work 7 mdc_top 0 22 B5bd0Lb8XTaChmZF?44]82
+!i122 2
+l31
+L17 52
+Vl>^]JSIk8A8ALKFIV6_CT1
+!s100 T9=M:O:=YN]koKc_?>O5d0
+R7
+33
+R8
+!i10b 1
+R9
+R24
+R25
+!i113 1
+R12
+R13
+Etb_mdc
+Z27 w1762702412
+R2
+R3
+R4
+!i122 3
+R0
+Z28 8tb_mdc.vhd
+Z29 Ftb_mdc.vhd
+l0
+L5 1
+V]^V^SV=RONKZOFCV^i^XA2
+!s100 ED5Z^SX53fDa5`<o?OU091
+R7
+33
+R8
+!i10b 1
+R9
+Z30 !s90 -reportprogress|300|-2008|tb_mdc.vhd|
+!s107 tb_mdc.vhd|
+!i113 1
+R12
+R13
+Asim
+R26
+R2
+R3
+R4
+DEx4 work 6 tb_mdc 0 22 ]^V^SV=RONKZOFCV^i^XA2
+!i122 3
+l20
+L8 92
+V0NOWI6>zc5RP<zmQ1RLYU1
+!s100 KQ20X@6]W_zVJMa3m]7`G0
+R7
+33
+R8
+!i10b 1
+R9
+R30
+Z31 !s107 tb_mdc.vhd|
+!i113 1
+R12
+R13

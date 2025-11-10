@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.11.9)  9 NOV 2025 12:28
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.11.9)  10 NOV 2025 16:18
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1010,64 +1010,58 @@ Package microtype Info: Loading generic protrusion settings for font family
 
 {C:/Users/Klaus/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Users/Klau
 s/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ec.enc}]
-LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 7
-5.
+(avaliacao3_mdc.toc
+LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 6
+.
 
 (C:\Users\Klaus\AppData\Local\Programs\MiKTeX\tex/latex/lm\ot1lmr.fd
 File: ot1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-LaTeX Font Info:    Trying to load font information for OML+lmm on input line 7
-5.
+LaTeX Font Info:    Trying to load font information for OML+lmm on input line 6
+.
 
 (C:\Users\Klaus\AppData\Local\Programs\MiKTeX\tex/latex/lm\omllmm.fd
 File: omllmm.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 
-75.
+6.
 
 (C:\Users\Klaus\AppData\Local\Programs\MiKTeX\tex/latex/lm\omslmsy.fd
 File: omslmsy.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 
-75.
+6.
 
 (C:\Users\Klaus\AppData\Local\Programs\MiKTeX\tex/latex/lm\omxlmex.fd
 File: omxlmex.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <12> on input line 75.
+(Font)              <12> on input line 6.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 75.
+(Font)              <8> on input line 6.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 75.
-
+(Font)              <6> on input line 6.
+)
 
 
 pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.75 
-      [1
+l.78 \chapter
+             {IntroduÃ§Ã£o} [1
 
-
-
-]
-
-[2] (avaliacao3_mdc.toc)
-
-[3
 
 ]
 Cap\'{\i }tulo 1.
 
 
-[4
+[2
 
 ]
 Cap\'{\i }tulo 2.
-LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 9
-4.
+LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 8
+6.
 (C:\Users\Klaus\AppData\Local\Programs\MiKTeX\tex/latex/lm\t1lmtt.fd
 File: t1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
@@ -1076,36 +1070,36 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 
-Overfull \hbox (2.00734pt too wide) in paragraph at lines 105--105
+Overfull \hbox (2.00734pt too wide) in paragraph at lines 97--97
 []|\T1/lmr/bx/n/12 (-20) Identificador| 
  []
 
 LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <12> not available
-(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 107.
+(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 99.
 
-Underfull \hbox (badness 10000) in paragraph at lines 130--130
-[]|\T1/lmr/m/n/12 (+20) Datapath $\OMS/lmsy/m/n/12 !$
+Underfull \hbox (badness 10000) in paragraph at lines 118--118
+[]|\T1/lmtt/b/n/12 w_Rx_ld\T1/lmr/bx/n/12 (+20) ,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 131--131
-[]|\T1/lmr/m/n/12 (+20) Datapath $\OMS/lmsy/m/n/12 !$
+Underfull \hbox (badness 10000) in paragraph at lines 119--119
+[]|\T1/lmtt/b/n/12 w_Rx_clr\T1/lmr/bx/n/12 (+20) ,
  []
 
 
-Underfull \hbox (badness 1147) in paragraph at lines 132--133
-\T1/lmr/m/n/12 (+20) va-lo-res in-ter-me-di-á-rios do al-go-
+Underfull \hbox (badness 10000) in paragraph at lines 120--120
+[]|\T1/lmtt/b/n/12 w_Rx_sub_ld\T1/lmr/bx/n/12 (+20) ,
  []
 
 
 
-[5
+[3
 
 ]
 
 Package babel Info: 'brazil' activates 'portuges' shorthands.
-(babel)             Reported on input line 137.
-[6{C:/Users/Klaus/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathsy.en
+(babel)             Reported on input line 128.
+[4{C:/Users/Klaus/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathsy.en
 c}]
 Cap\'{\i }tulo 3.
 (C:\Users\Klaus\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstlang1.sty
@@ -1115,46 +1109,46 @@ File: lstlang1.sty 2024/09/23 1.10c listings language file
 File: lstmisc.sty 2024/09/23 1.10c (Carsten Heinz)
 )
 Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on i
-nput line 142.
+nput line 133.
 
 
-[7
+[5
 
 ]
-<media/states.jpg, id=139, 1335.99126pt x 468.75125pt>
-File: media/states.jpg Graphic file (type jpg)
-<use media/states.jpg>
-Package pdftex.def Info: media/states.jpg  used on input line 184.
-(pdftex.def)             Requested size: 455.0pt x 159.64511pt.
+<media/states.jpeg, id=128, 945.5325pt x 650.43pt>
+File: media/states.jpeg Graphic file (type jpg)
+<use media/states.jpeg>
+Package pdftex.def Info: media/states.jpeg  used on input line 175.
+(pdftex.def)             Requested size: 455.0pt x 312.99683pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 195--196
+Underfull \hbox (badness 10000) in paragraph at lines 186--187
 []|\T1/lmr/m/n/12 (+20) Próximo es-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 200--200
+Underfull \hbox (badness 10000) in paragraph at lines 191--191
 []|\T1/lmtt/m/n/12 w_X_EQ_Y =
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 201--201
+Underfull \hbox (badness 10000) in paragraph at lines 192--192
 []|\T1/lmtt/m/n/12 w_X_LT_Y =
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 205--205
+Underfull \hbox (badness 10000) in paragraph at lines 196--196
 []|\T1/lmtt/m/n/12 o_RDY = 1\T1/lmr/m/n/12 (+20) , man-
  []
 
 
 
-[8 <./media/states.jpg>]
+[6 <./media/states.jpeg>]
 
-[9]
+[7]
 Cap\'{\i }tulo 4.
 
 
-[10
+[8
 
 ]
 Cap\'{\i }tulo 5.
@@ -1162,9 +1156,13 @@ Cap\'{\i }tulo 5.
 File: lstlang1.sty 2024/09/23 1.10c listings language file
 )
 
-[11
+[9
 
 ]
+
+[10]
+
+[11]
 
 [12]
 
@@ -1181,17 +1179,23 @@ File: lstlang1.sty 2024/09/23 1.10c listings language file
 [18]
 Cap\'{\i }tulo 6.
 
-Overfull \hbox (12.59761pt too wide) in paragraph at lines 549--550
+Overfull \hbox (12.59761pt too wide) in paragraph at lines 590--591
 []\T1/lmr/m/n/12 (-20) Compilação dos ar-qui-vos VHDL (\T1/lmtt/m/n/12 mdc_data
 path.vhd\T1/lmr/m/n/12 (-20) , \T1/lmtt/m/n/12 mdc_control.vhd\T1/lmr/m/n/12 (-
 20) , \T1/lmtt/m/n/12 mdc_top.vhd\T1/lmr/m/n/12 (-20) ,
  []
 
+<media/mdc_waveforms_example.png, id=538, 946.53625pt x 434.62375pt>
+File: media/mdc_waveforms_example.png Graphic file (type png)
+<use media/mdc_waveforms_example.png>
+Package pdftex.def Info: media/mdc_waveforms_example.png  used on input line 59
+7.
+(pdftex.def)             Requested size: 455.0pt x 208.92209pt.
 
 
 [19
 
-]
+ <./media/mdc_waveforms_example.png>]
 
 [20]
 Cap\'{\i }tulo 7.
@@ -1214,32 +1218,63 @@ bibitemlist
 LaTeX2e <2025-06-01> patch level 1
 L3 programming layer <2020/03/25>
  ***********
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
  ) 
 Here is how much of TeX's memory you used:
- 22708 strings out of 468079
- 366943 string characters out of 5425751
- 1231264 words of memory out of 5000000
- 50589 multiletter control sequences out of 15000+600000
- 695088 words of font info for 131 fonts, out of 8000000 for 9000
+ 22767 strings out of 468079
+ 367834 string characters out of 5425751
+ 1243230 words of memory out of 5000000
+ 50597 multiletter control sequences out of 15000+600000
+ 692118 words of font info for 128 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  99i,13n,107p,1013b,2158s stack positions out of 10000i,1000n,20000p,200000b,200000s
-<C:/Users/Klaus/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx12.pf
-b><C:/Users/Klaus/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr10.pfb
-><C:/Users/Klaus/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr12.pfb>
-<C:/Users/Klaus/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr8.pfb><C
-:/Users/Klaus/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmri10.pfb><C
-:/Users/Klaus/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmri12.pfb><C
-:/Users/Klaus/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmss12.pfb><C
-:/Users/Klaus/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmss17.pfb><C
-:/Users/Klaus/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmssbx10.pfb>
-<C:/Users/Klaus/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy10.pfb>
-<C:/Users/Klaus/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtk10.pfb>
-<C:/Users/Klaus/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt10.pfb>
-<C:/Users/Klaus/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt12.pfb>
 
-Output written on avaliacao3_mdc.pdf (23 pages, 541567 bytes).
+pdfTeX warning (dest): name{table.caption.11} has been referenced but does not 
+exist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{figure.caption.10} has been referenced but does not
+ exist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{figure.caption.9} has been referenced but does not 
+exist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{table.caption.7} has been referenced but does not e
+xist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{table.caption.4} has been referenced but does not e
+xist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{section*.16} has been referenced but does not exist
+, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{section*.13} has been referenced but does not exist
+, replaced by a fixed one
+
+<C:/Users/Klaus/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx12.pfb>
+<C:/Users/Klaus/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr10.pfb><
+C:/Users/Klaus/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr12.pfb><C
+:/Users/Klaus/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr8.pfb><C:/
+Users/Klaus/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmri10.pfb><C:/
+Users/Klaus/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmri12.pfb><C:/
+Users/Klaus/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmss12.pfb><C:/
+Users/Klaus/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmss17.pfb><C:/
+Users/Klaus/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmssbx10.pfb><C
+:/Users/Klaus/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy10.pfb><C
+:/Users/Klaus/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtk10.pfb><C
+:/Users/Klaus/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt10.pfb><C
+:/Users/Klaus/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt12.pfb>
+Output written on avaliacao3_mdc.pdf (23 pages, 678652 bytes).
 PDF statistics:
- 734 PDF objects out of 1000 (max. 8388607)
- 393 named destinations out of 1000 (max. 500000)
- 41166 words of extra memory for PDF output out of 42996 (max. 10000000)
+ 799 PDF objects out of 1000 (max. 8388607)
+ 448 named destinations out of 1000 (max. 500000)
+ 39107 words of extra memory for PDF output out of 42996 (max. 10000000)
 

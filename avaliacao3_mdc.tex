@@ -57,7 +57,7 @@
 
 \titulo{Avaliação 3 -- Projeto RTL do Algoritmo de Máximo Divisor Comum}
 \autor{Fabricio Roskowski\\Klaus Dieter Kupper}
-\orientador{Prof. Dr. Cesar Albenes Zeferino\\Prof. Dr. Douglas Rossi Melo}
+\orientador{Professores: Cesar Albenes Zeferino\\Douglas Rossi Melo}
 \local{Itajaí -- SC}
 \data{Novembro de 2025}
 \instituicao{Universidade do Vale do Itajaí\\Programa de Pós-Graduação em Computação Aplicada\\Disciplina: Projeto de Sistemas Digitais}
@@ -71,22 +71,14 @@
 \OnehalfSpacing
 
 \imprimircapa
-\imprimirfolhaderosto*
-
-\begin{resumo}
-Este relatório descreve o desenvolvimento de um sistema digital baseado em VHDL para cálculo do Máximo Divisor Comum (MDC) entre dois operandos de 8 bits, seguindo o método de projeto RTL discutido em sala de aula. Partindo do algoritmo em linguagem C, foi derivada uma máquina de estados de alto nível, identificadas as partições de controle e caminho de dados, definidos os sinais internos com a convenção de nomenclatura solicitada e implementados os blocos VHDL correspondentes (topo, controle, caminho de dados e testbench). São apresentados os diagramas conceituais, a descrição do fluxo de dados, o planejamento de verificação com ModelSim e as orientações para síntese no Quartus Prime. Resultados de simulação e métricas de síntese serão incorporados após a execução dos experimentos.
-
-\vspace{\onelineskip}
-\noindent\textbf{Palavras-chave}: VHDL, RTL, máquina de estados, MDC.
-\end{resumo}
 
 \tableofcontents*
 \textual
 
 \chapter{Introdução}
-A Avaliação 3 da disciplina Projeto de Sistemas Digitais tem como objetivo consolidar o método de projeto RTL por meio da implementação de um algoritmo não trivial na linguagem VHDL. O algoritmo selecionado calcula o Máximo Divisor Comum (MDC) de dois operandos inteiros sem sinal de 8 bits utilizando o método de subtrações sucessivas. A especificação exige a decomposição em controle (máquina de estados) e caminho de dados, a adoção de uma convenção de nomenclatura padronizada, a verificação funcional por meio de testbenches no ModelSim e a síntese do sistema no Quartus Prime para obtenção de métricas de custo e desempenho.
+A Avaliação 3 da disciplina Projeto de Sistemas Digitais tem como objetivo praticar o método de projeto RTL implementando em VHDL o cálculo do Máximo Divisor Comum (MDC) para operandos de 8 bits, empregando o algoritmo de subtrações sucessivas discutido em aula. O fluxo solicitado inclui: derivação da máquina de estados de controle, particionamento em controle e caminho de dados, adoção da convenção de nomenclatura do enunciado e verificação funcional no ModelSim antes da síntese no Quartus Prime.
 
-Este documento registra o processo completo de desenvolvimento: interpretação dos requisitos, construção da máquina de estados de alto nível a partir do algoritmo em C, identificação dos blocos de controle e processamento, definição dos sinais internos, implementação em VHDL no estilo recomendado pela Xilinx/AMD e preparação do ambiente de verificação. As seções seguintes também deixam espaço reservado para a inclusão de evidências experimentais (formas de onda e diagramas RTL) e resultados de síntese, a serem coletados posteriormente.
+Este relatório concentra-se em documentar a solução desenvolvida e orientar a coleta das evidências finais (formas de onda e métricas de síntese). Mantivemos apenas os elementos essenciais para a entrega da avaliação: descrição da interface, FSM, arquitetura RTL, código VHDL e plano resumido de validação.
 
 \chapter{Especificação do Sistema}
 
@@ -119,17 +111,16 @@ A Tabela~\ref{tab:interface} apresenta um resumo das interfaces externas, enquan
   \centering
   \caption{Sinais internos definidos no particionamento controle/caminho de dados.}
   \label{tab:sinais-internos}
-  \begin{tabular}{>{\bfseries}p{3cm}p{3cm}p{6cm}}
+  \begin{tabular}{>{\bfseries}p{3.2cm}p{3.3cm}p{5.8cm}}
     \toprule
     Sinal & Origem/Destino & Função \\
     \midrule
-    \code{w_LD_X} & Controle $\rightarrow$ Datapath & Habilita a carga do registrador \code{r_X}. \\
-    \code{w_LD_Y} & Controle $\rightarrow$ Datapath & Habilita a carga do registrador \code{r_Y}. \\
-    \code{w_SEL_X} & Controle $\rightarrow$ Datapath & Seleciona entre entrada externa e resultado de subtração para \code{r_X}. \\
-    \code{w_SEL_Y} & Controle $\rightarrow$ Datapath & Seleciona entre entrada externa e resultado de subtração para \code{r_Y}. \\
-    \code{w_X_EQ_Y} & Datapath $\rightarrow$ Controle & Valor lógico indicando igualdade entre \code{r_X} e \code{r_Y}. \\
-    \code{w_X_LT_Y} & Datapath $\rightarrow$ Controle & Valor lógico indicando se \code{r_X < r_Y}. \\
-    \code{r_X}, \code{r_Y} & Datapath & Registradores que armazenam os valores intermediários do algoritmo. \\
+    \code{w_Rx_ld}, \code{w_Ry_ld} & Controle $\rightarrow$ Datapath & Habilitam a carga inicial dos registradores \code{r_X} e \code{r_Y}. \\
+    \code{w_Rx_clr}, \code{w_Ry_clr} & Controle $\rightarrow$ Datapath & Forçam a limpeza assíncrona dos registradores (após reset e em condições excepcionais). \\
+    \code{w_Rx_sub_ld}, \code{w_Ry_sub_ld} & Controle $\rightarrow$ Datapath & Atualizam \code{r_X} ou \code{r_Y} com o resultado da subtração apropriada. \\
+    \code{w_X_eq_Y} & Datapath $\rightarrow$ Controle & Indica igualdade entre \code{r_X} e \code{r_Y}. \\
+    \code{w_X_lt_Y} & Datapath $\rightarrow$ Controle & Indica que \code{r_X} é estritamente menor que \code{r_Y}. \\
+    \code{r_X}, \code{r_Y} & Datapath & Registradores de armazenamento intermediário do algoritmo. \\
     \bottomrule
   \end{tabular}
 \end{table}
@@ -181,7 +172,7 @@ A partir do algoritmo, identificaram-se seis estados para o controle: \code{s_ID
 
 \begin{figure}[H]
   \centering
-  \includeplaceholder{media/states.jpg}{Reservar espaço para diagrama de estados da FSM}
+  \includeplaceholder{media/states.jpeg}{Reservar espaço para diagrama de estados da FSM}
   \caption{Diagrama preliminar da máquina de estados de controle.}
   \label{fig:fsm-states}
 \end{figure}
@@ -203,12 +194,13 @@ A partir do algoritmo, identificaram-se seis estados para o controle: \code{s_ID
     \code{s_SUB_X} & Atualiza \code{r_X} com \code{r_X - r_Y} & -- & \code{s_COMPARE} \\
     \code{s_SUB_Y} & Atualiza \code{r_Y} com \code{r_Y - r_X} & -- & \code{s_COMPARE} \\
     \code{s_DONE} & \code{o_RDY = 1}, mantém \code{o_D} & \code{i_GO = 0} & \code{s_IDLE} \\
+                  &                                      & \code{i_GO = 1} & \code{s_DONE} \\
     \bottomrule
   \end{tabular}
 \end{table}
 
 \section{Particionamento do Caminho de Dados}
-O caminho de dados contém dois registradores (\code{r_X} e \code{r_Y}), dois blocos de subtração e multiplexadores de entrada. Os subprodutos das subtrações (\code{w_SUB_XY = r_X - r_Y} e \code{w_SUB_YX = r_Y - r_X}) são selecionados pelo controle para atualizar o registrador apropriado, evitando underflow por meio da lógica de decisão da FSM. As comparações de igualdade (\code{w_X_EQ_Y}) e menor (\code{w_X_LT_Y}) são calculadas continuamente e alimentam o bloco de controle.
+O caminho de dados contém dois registradores (\code{r_X} e \code{r_Y}) e dois blocos de subtração sempre ativos. Os resultados intermediários (\code{w_sub_x = r_X - r_Y} e \code{w_sub_y = r_Y - r_X}) alimentam os sinais de atualização condicional controlados pela FSM. O bloco de controle decide qual registrador deve receber uma nova subtração por meio das linhas \code{w_Rx_sub_ld} e \code{w_Ry_sub_ld}, evitando underflow ao nunca habilitar a operação inválida. As comparações de igualdade (\code{w_X_eq_Y}) e menor (\code{w_X_lt_Y}) são calculadas continuamente e retroalimentam o controle.
 
 \chapter{Arquitetura RTL Proposta}
 
@@ -223,10 +215,10 @@ A Figura~\ref{fig:rtl-diagram} apresenta o diagrama RTL em alto nível, destacan
 \end{figure}
 
 \section{Bloco de Controle}
-O bloco \code{mdc_control} é responsável por sequenciar o algoritmo, garantindo que apenas operações válidas de subtração sejam realizadas. O uso de estados explícitos facilita a inclusão de novas condições de parada (por exemplo, detecção de operandos nulos) sem alterar o caminho de dados. As saídas \code{w_LD_X}, \code{w_LD_Y}, \code{w_SEL_X} e \code{w_SEL_Y} são exclusivamente geradas pelo controle e utilizadas como sinais de habilitação e seleção dentro do datapath.
+O bloco \code{mdc_control} é responsável por sequenciar o algoritmo, garantindo que apenas operações válidas de subtração sejam realizadas. O uso de estados explícitos facilita a inclusão de novas condições de parada (por exemplo, detecção de operandos nulos) sem alterar o caminho de dados. As saídas \code{w_Rx_ld}, \code{w_Ry_ld}, \code{w_Rx_clr}, \code{w_Ry_clr}, \code{w_Rx_sub_ld} e \code{w_Ry_sub_ld} são exclusivamente geradas pelo controle e utilizadas como sinais de habilitação dentro do datapath. O sinal \code{o_RDY} permanece em nível alto nos estados \code{s_IDLE} e \code{s_DONE}, assegurando o handshake requisitado pelo enunciado (\code{o_RDY = 1} sempre que o módulo estiver apto a receber nova transação).
 
 \section{Caminho de Dados}
-O caminho de dados mantém os operandos em registradores e atualiza seus valores com base na decisão do controle. As subtrações são realizadas em paralelo, permitindo que o controlador selecione o resultado correto com atraso mínimo. O resultado final é exposto diretamente em \code{o_result}, que é repassado ao módulo topo.
+O caminho de dados mantém os operandos em registradores e atualiza seus valores com base na decisão do controle. As subtrações são realizadas em paralelo, permitindo que o controlador selecione o resultado correto com atraso mínimo. O resultado final é exposto diretamente em \code{o_D}, que é repassado ao módulo topo.
 
 \chapter{Implementação em VHDL}
 Os códigos foram escritos seguindo o guia de estilo da avaliação: palavras reservadas em minúsculas, sinais em maiúsculas com prefixos (\code{i_}, \code{o_}, \code{w_}, \code{r_}), tabulação de dois espaços e comentários em inglês para evitar problemas de codificação.
@@ -237,59 +229,69 @@ A Listagem~\ref{lst:vhdl_top} mostra o módulo topo \code{mdc_top}, responsável
 \begin{lstlisting}[language=VHDL, caption={Módulo topo do sistema MDC}, label={lst:vhdl_top}]
 library ieee;
 use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
 
 entity mdc_top is
   port (
-    i_clk  : in  std_logic;
-    i_rstn : in  std_logic;
-    i_go   : in  std_logic;
-    i_x    : in  std_logic_vector(7 downto 0);
-    i_y    : in  std_logic_vector(7 downto 0);
-    o_d    : out std_logic_vector(7 downto 0);
-    o_rdy  : out std_logic
+    i_CLK  : in  std_logic;
+    i_RSTn : in  std_logic;
+    i_GO   : in  std_logic;
+    i_X    : in  std_logic_vector(7 downto 0);
+    i_Y    : in  std_logic_vector(7 downto 0);
+    o_D    : out std_logic_vector(7 downto 0);
+    o_RDY  : out std_logic
   );
 end entity mdc_top;
 
 architecture rtl of mdc_top is
-  signal w_LD_X   : std_logic;
-  signal w_LD_Y   : std_logic;
-  signal w_SEL_X  : std_logic;
-  signal w_SEL_Y  : std_logic;
-  signal w_X_EQ_Y : std_logic;
-  signal w_X_LT_Y : std_logic;
-  signal w_RESULT : std_logic_vector(7 downto 0);
+
+  signal w_Rx_ld     : std_logic;
+  signal w_Ry_ld     : std_logic;
+  signal w_Rx_clr    : std_logic;
+  signal w_Ry_clr    : std_logic;
+  signal w_Rx_sub_ld : std_logic;
+  signal w_Ry_sub_ld : std_logic;
+
+  signal w_X_eq_Y    : std_logic;
+  signal w_X_lt_Y    : std_logic;
+  signal w_D_out     : std_logic_vector(7 downto 0);
+
 begin
 
   u_datapath : entity work.mdc_datapath
     port map (
-      i_clk    => i_clk,
-      i_rstn   => i_rstn,
-      i_x      => i_x,
-      i_y      => i_y,
-      i_ld_x   => w_LD_X,
-      i_ld_y   => w_LD_Y,
-      i_sel_x  => w_SEL_X,
-      i_sel_y  => w_SEL_Y,
-      o_x_eq_y => w_X_EQ_Y,
-      o_x_lt_y => w_X_LT_Y,
-      o_result => w_RESULT
+      i_CLK       => i_CLK,
+      i_RSTn      => i_RSTn,
+      i_X         => i_X,
+      i_Y         => i_Y,
+      i_Rx_ld     => w_Rx_ld,
+      i_Ry_ld     => w_Ry_ld,
+      i_Rx_clr    => w_Rx_clr,
+      i_Ry_clr    => w_Ry_clr,
+      i_Rx_sub_ld => w_Rx_sub_ld,
+      i_Ry_sub_ld => w_Ry_sub_ld,
+      o_X_eq_Y    => w_X_eq_Y,
+      o_X_lt_Y    => w_X_lt_Y,
+      o_D_out     => w_D_out
     );
 
   u_control : entity work.mdc_control
     port map (
-      i_clk    => i_clk,
-      i_rstn   => i_rstn,
-      i_go     => i_go,
-      i_x_eq_y => w_X_EQ_Y,
-      i_x_lt_y => w_X_LT_Y,
-      o_ld_x   => w_LD_X,
-      o_ld_y   => w_LD_Y,
-      o_sel_x  => w_SEL_X,
-      o_sel_y  => w_SEL_Y,
-      o_rdy    => o_rdy
+      i_CLK        => i_CLK,
+      i_RSTn       => i_RSTn,
+      i_GO         => i_GO,
+      i_X_eq_Y     => w_X_eq_Y,
+      i_X_lt_Y     => w_X_lt_Y,
+      o_Rx_ld      => w_Rx_ld,
+      o_Ry_ld      => w_Ry_ld,
+      o_Rx_clr     => w_Rx_clr,
+      o_Ry_clr     => w_Ry_clr,
+      o_Rx_sub_ld  => w_Rx_sub_ld,
+      o_Ry_sub_ld  => w_Ry_sub_ld,
+      o_RDY        => o_RDY
     );
 
-  o_d <= w_RESULT;
+  o_D <= w_D_out;
 
 end architecture rtl;
 \end{lstlisting}
@@ -300,104 +302,108 @@ A Listagem~\ref{lst:vhdl_control} apresenta a implementação da FSM derivada na
 \begin{lstlisting}[language=VHDL, caption={Implementação da FSM de controle}, label={lst:vhdl_control}]
 library ieee;
 use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
 
 entity mdc_control is
   port (
-    i_clk    : in  std_logic;
-    i_rstn   : in  std_logic;
-    i_go     : in  std_logic;
-    i_x_eq_y : in  std_logic;
-    i_x_lt_y : in  std_logic;
-    o_ld_x   : out std_logic;
-    o_ld_y   : out std_logic;
-    o_sel_x  : out std_logic;
-    o_sel_y  : out std_logic;
-    o_rdy    : out std_logic
+    i_CLK      : in  std_logic;
+    i_RSTn     : in  std_logic;
+    i_GO       : in  std_logic;
+    i_X_eq_Y   : in  std_logic;
+    i_X_lt_Y   : in  std_logic;
+    o_Rx_ld     : out std_logic;
+    o_Ry_ld     : out std_logic;
+    o_Rx_clr    : out std_logic;
+    o_Ry_clr    : out std_logic;
+    o_Rx_sub_ld : out std_logic;
+    o_Ry_sub_ld : out std_logic;
+    o_RDY       : out std_logic
   );
 end entity mdc_control;
 
 architecture rtl of mdc_control is
-  type t_STATE is (s_IDLE, s_LOAD, s_COMPARE, s_SUB_X, s_SUB_Y, s_DONE);
-  signal r_STATE      : t_STATE;
-  signal w_NEXT_STATE : t_STATE;
 
-  signal w_LD_X   : std_logic;
-  signal w_LD_Y   : std_logic;
-  signal w_SEL_X  : std_logic;
-  signal w_SEL_Y  : std_logic;
-  signal w_RDY    : std_logic;
+  type t_state is (s_IDLE, s_LOAD, s_CHECK, s_SUB_Y, s_SUB_X, s_DONE);
+  signal s_CUR : t_state := s_IDLE;
+  signal s_NXT : t_state;
+
+  signal v_Rx_ld, v_Ry_ld, v_Rx_clr, v_Ry_clr, v_Rx_sub_ld, v_Ry_sub_ld, v_RDY : std_logic;
+
 begin
 
-  p_STATE_REG : process(i_clk, i_rstn)
+  p_state : process (i_RSTn, i_CLK)
   begin
-    if i_rstn = '0' then
-      r_STATE <= s_IDLE;
-    elsif rising_edge(i_clk) then
-      r_STATE <= w_NEXT_STATE;
+    if i_RSTn = '0' then
+      s_CUR <= s_IDLE;
+    elsif rising_edge(i_CLK) then
+      s_CUR <= s_NXT;
     end if;
-  end process p_STATE_REG;
+  end process p_state;
 
-  p_STATE_NEXT : process(r_STATE, i_go, i_x_eq_y, i_x_lt_y)
+  p_comb : process (s_CUR, i_GO, i_X_eq_Y, i_X_lt_Y)
   begin
-    w_NEXT_STATE <= r_STATE;
-    case r_STATE is
+    v_Rx_ld      <= '0';
+    v_Ry_ld      <= '0';
+    v_Rx_clr     <= '0';
+    v_Ry_clr     <= '0';
+    v_Rx_sub_ld  <= '0';
+    v_Ry_sub_ld  <= '0';
+    v_RDY        <= '0';
+    s_NXT        <= s_CUR;
+
+    case s_CUR is
       when s_IDLE =>
-        if i_go = '1' then
-          w_NEXT_STATE <= s_LOAD;
-        end if;
-      when s_LOAD =>
-        w_NEXT_STATE <= s_COMPARE;
-      when s_COMPARE =>
-        if i_x_eq_y = '1' then
-          w_NEXT_STATE <= s_DONE;
-        elsif i_x_lt_y = '1' then
-          w_NEXT_STATE <= s_SUB_Y;
+        v_RDY <= '1';
+        if i_GO = '1' then
+          s_NXT <= s_LOAD;
         else
-          w_NEXT_STATE <= s_SUB_X;
+          s_NXT <= s_IDLE;
         end if;
-      when s_SUB_X =>
-        w_NEXT_STATE <= s_COMPARE;
-      when s_SUB_Y =>
-        w_NEXT_STATE <= s_COMPARE;
-      when s_DONE =>
-        if i_go = '0' then
-          w_NEXT_STATE <= s_IDLE;
-        end if;
-    end case;
-  end process p_STATE_NEXT;
 
-  p_OUTPUTS : process(r_STATE)
-  begin
-    w_LD_X  <= '0';
-    w_LD_Y  <= '0';
-    w_SEL_X <= '0';
-    w_SEL_Y <= '0';
-    w_RDY   <= '0';
-
-    case r_STATE is
-      when s_IDLE =>
-        w_RDY <= '1';
       when s_LOAD =>
-        w_LD_X  <= '1';
-        w_LD_Y  <= '1';
-      when s_COMPARE =>
-        null;
-      when s_SUB_X =>
-        w_LD_X  <= '1';
-        w_SEL_X <= '1';
-      when s_SUB_Y =>
-        w_LD_Y  <= '1';
-        w_SEL_Y <= '1';
-      when s_DONE =>
-        w_RDY <= '1';
-    end case;
-  end process p_OUTPUTS;
+        v_Rx_ld <= '1';
+        v_Ry_ld <= '1';
+        s_NXT <= s_CHECK;
 
-  o_ld_x  <= w_LD_X;
-  o_ld_y  <= w_LD_Y;
-  o_sel_x <= w_SEL_X;
-  o_sel_y <= w_SEL_Y;
-  o_rdy   <= w_RDY;
+      when s_CHECK =>
+        if i_X_eq_Y = '1' then
+          s_NXT <= s_DONE;
+        else
+          if i_X_lt_Y = '1' then
+            s_NXT <= s_SUB_Y;
+          else
+            s_NXT <= s_SUB_X;
+          end if;
+        end if;
+
+      when s_SUB_Y =>
+        v_Ry_sub_ld <= '1';
+        s_NXT <= s_CHECK;
+
+      when s_SUB_X =>
+        v_Rx_sub_ld <= '1';
+        s_NXT <= s_CHECK;
+
+      when s_DONE =>
+        v_RDY <= '1';
+        if i_GO = '0' then
+          s_NXT <= s_IDLE;
+        else
+          s_NXT <= s_DONE;
+        end if;
+
+      when others =>
+        s_NXT <= s_IDLE;
+    end case;
+  end process p_comb;
+
+  o_Rx_ld     <= v_Rx_ld;
+  o_Ry_ld     <= v_Ry_ld;
+  o_Rx_clr    <= v_Rx_clr;
+  o_Ry_clr    <= v_Ry_clr;
+  o_Rx_sub_ld <= v_Rx_sub_ld;
+  o_Ry_sub_ld <= v_Ry_sub_ld;
+  o_RDY       <= v_RDY;
 
 end architecture rtl;
 \end{lstlisting}
@@ -412,58 +418,69 @@ use ieee.numeric_std.all;
 
 entity mdc_datapath is
   port (
-    i_clk    : in  std_logic;
-    i_rstn   : in  std_logic;
-    i_x      : in  std_logic_vector(7 downto 0);
-    i_y      : in  std_logic_vector(7 downto 0);
-    i_ld_x   : in  std_logic;
-    i_ld_y   : in  std_logic;
-    i_sel_x  : in  std_logic;
-    i_sel_y  : in  std_logic;
-    o_x_eq_y : out std_logic;
-    o_x_lt_y : out std_logic;
-    o_result : out std_logic_vector(7 downto 0)
+    i_CLK       : in  std_logic;
+    i_RSTn      : in  std_logic;
+    i_X         : in  std_logic_vector(7 downto 0);
+    i_Y         : in  std_logic_vector(7 downto 0);
+    i_Rx_ld     : in  std_logic;
+    i_Ry_ld     : in  std_logic;
+    i_Rx_clr    : in  std_logic;
+    i_Ry_clr    : in  std_logic;
+    i_Rx_sub_ld : in  std_logic;
+    i_Ry_sub_ld : in  std_logic;
+    o_X_eq_Y    : out std_logic;
+    o_X_lt_Y    : out std_logic;
+    o_D_out     : out std_logic_vector(7 downto 0)
   );
 end entity mdc_datapath;
 
 architecture rtl of mdc_datapath is
-  signal r_X      : std_logic_vector(7 downto 0);
-  signal r_Y      : std_logic_vector(7 downto 0);
-  signal w_NEXT_X : std_logic_vector(7 downto 0);
-  signal w_NEXT_Y : std_logic_vector(7 downto 0);
-  signal w_SUB_XY : std_logic_vector(7 downto 0);
-  signal w_SUB_YX : std_logic_vector(7 downto 0);
+
+  signal r_X : std_logic_vector(7 downto 0);
+  signal r_Y : std_logic_vector(7 downto 0);
+
+  signal w_sub_x : unsigned(7 downto 0);
+  signal w_sub_y : unsigned(7 downto 0);
+
 begin
 
-  w_SUB_XY <= std_logic_vector(unsigned(r_X) - unsigned(r_Y));
-  w_SUB_YX <= std_logic_vector(unsigned(r_Y) - unsigned(r_X));
+  w_sub_x <= unsigned(r_X) - unsigned(r_Y);
+  w_sub_y <= unsigned(r_Y) - unsigned(r_X);
 
-  with i_sel_x select
-    w_NEXT_X <= i_x      when '0',
-                w_SUB_XY when others;
+  o_X_eq_Y <= '1' when r_X = r_Y else '0';
+  o_X_lt_Y <= '1' when unsigned(r_X) < unsigned(r_Y) else '0';
 
-  with i_sel_y select
-    w_NEXT_Y <= i_y      when '0',
-                w_SUB_YX when others;
+  o_D_out <= r_X;
 
-  p_REGISTERS : process(i_clk, i_rstn)
+  p_reg_x : process (i_RSTn, i_CLK)
   begin
-    if i_rstn = '0' then
+    if i_RSTn = '0' then
       r_X <= (others => '0');
-      r_Y <= (others => '0');
-    elsif rising_edge(i_clk) then
-      if i_ld_x = '1' then
-        r_X <= w_NEXT_X;
-      end if;
-      if i_ld_y = '1' then
-        r_Y <= w_NEXT_Y;
+    elsif rising_edge(i_CLK) then
+      if i_Rx_clr = '1' then
+        r_X <= (others => '0');
+      elsif i_Rx_ld = '1' then
+        r_X <= i_X;
+      elsif i_Rx_sub_ld = '1' then
+        r_X <= std_logic_vector(w_sub_x);
       end if;
     end if;
-  end process p_REGISTERS;
+  end process p_reg_x;
 
-  o_x_eq_y <= '1' when r_X = r_Y else '0';
-  o_x_lt_y <= '1' when unsigned(r_X) < unsigned(r_Y) else '0';
-  o_result <= r_X;
+  p_reg_y : process (i_RSTn, i_CLK)
+  begin
+    if i_RSTn = '0' then
+      r_Y <= (others => '0');
+    elsif rising_edge(i_CLK) then
+      if i_Ry_clr = '1' then
+        r_Y <= (others => '0');
+      elsif i_Ry_ld = '1' then
+        r_Y <= i_Y;
+      elsif i_Ry_sub_ld = '1' then
+        r_Y <= std_logic_vector(w_sub_y);
+      end if;
+    end if;
+  end process p_reg_y;
 
 end architecture rtl;
 \end{lstlisting}
@@ -476,67 +493,91 @@ library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
-entity mdc_tb is
-end entity mdc_tb;
+entity tb_mdc is
+end entity;
 
-architecture sim of mdc_tb is
-  constant c_CLK_PERIOD : time := 10 ns;
+architecture sim of tb_mdc is
 
-  signal w_CLK  : std_logic := '0';
-  signal w_RSTn : std_logic := '0';
-  signal w_GO   : std_logic := '0';
-  signal w_X    : std_logic_vector(7 downto 0) := (others => '0');
-  signal w_Y    : std_logic_vector(7 downto 0) := (others => '0');
-  signal w_D    : std_logic_vector(7 downto 0);
-  signal w_RDY  : std_logic;
+  signal i_CLK  : std_logic := '0';
+  signal i_RSTn : std_logic := '0';
+  signal i_GO   : std_logic := '0';
+  signal i_X    : std_logic_vector(7 downto 0) := (others => '0');
+  signal i_Y    : std_logic_vector(7 downto 0) := (others => '0');
+  signal o_D    : std_logic_vector(7 downto 0);
+  signal o_RDY  : std_logic;
+
+  constant CLK_PERIOD : time := 10 ns;
+
 begin
 
   u_dut : entity work.mdc_top
     port map (
-      i_clk  => w_CLK,
-      i_rstn => w_RSTn,
-      i_go   => w_GO,
-      i_x    => w_X,
-      i_y    => w_Y,
-      o_d    => w_D,
-      o_rdy  => w_RDY
+      i_CLK  => i_CLK,
+      i_RSTn => i_RSTn,
+      i_GO   => i_GO,
+      i_X    => i_X,
+      i_Y    => i_Y,
+      o_D    => o_D,
+      o_RDY  => o_RDY
     );
 
-  p_CLK : process
+  p_clk : process
   begin
-    w_CLK <= '0';
-    wait for c_CLK_PERIOD / 2;
-    w_CLK <= '1';
-    wait for c_CLK_PERIOD / 2;
-  end process p_CLK;
+    while true loop
+      i_CLK <= '0';
+      wait for CLK_PERIOD/2;
+      i_CLK <= '1';
+      wait for CLK_PERIOD/2;
+    end loop;
+  end process p_clk;
 
-  p_STIMULUS : process
+  p_stim : process
   begin
-    w_RSTn <= '0';
-    wait for 3 * c_CLK_PERIOD;
-    w_RSTn <= '1';
-    wait for c_CLK_PERIOD;
+    i_RSTn <= '0';
+    wait for CLK_PERIOD;
+    i_RSTn <= '1';
 
-    w_X <= std_logic_vector(to_unsigned(108, 8));
-    w_Y <= std_logic_vector(to_unsigned(84, 8));
-    wait for c_CLK_PERIOD;
-    w_GO <= '1';
-    wait for c_CLK_PERIOD;
-    w_GO <= '0';
+    i_X <= std_logic_vector(to_unsigned(14,8));
+    i_Y <= std_logic_vector(to_unsigned(21,8));
+    wait for CLK_PERIOD;
+    i_GO <= '1';
+    wait for CLK_PERIOD;
+    i_GO <= '0';
 
-    wait until w_RDY = '1';
-    wait for 2 * c_CLK_PERIOD;
+    wait until o_RDY = '1';
+    assert o_D = std_logic_vector(to_unsigned(7,8))
+      report "Test1 FAILED: gcd(14,21) != 7" severity error;
 
-    w_X <= std_logic_vector(to_unsigned(27, 8));
-    w_Y <= std_logic_vector(to_unsigned(18, 8));
-    wait for c_CLK_PERIOD;
-    w_GO <= '1';
-    wait for c_CLK_PERIOD;
-    w_GO <= '0';
+    wait for 30 ns;
 
-    wait for 60 * c_CLK_PERIOD;
+    i_X <= std_logic_vector(to_unsigned(100,8));
+    i_Y <= std_logic_vector(to_unsigned(25,8));
+    wait for 20 ns;
+    i_GO <= '1';
+    wait for 10 ns;
+    i_GO <= '0';
+
+    wait until o_RDY = '1';
+    assert o_D = std_logic_vector(to_unsigned(25,8))
+      report "Test2 FAILED: gcd(100,25) != 25" severity error;
+
+    wait for 50 ns;
+
+    i_X <= std_logic_vector(to_unsigned(42,8));
+    i_Y <= std_logic_vector(to_unsigned(42,8));
+    wait for 20 ns;
+    i_GO <= '1';
+    wait for 10 ns;
+    i_GO <= '0';
+    wait until o_RDY = '1';
+    assert o_D = std_logic_vector(to_unsigned(42,8))
+      report "Test3 FAILED: gcd(42,42) != 42" severity error;
+
+    wait for 50 ns;
+
+    report "SIMULATION COMPLETE" severity note;
     wait;
-  end process p_STIMULUS;
+  end process p_stim;
 
 end architecture sim;
 \end{lstlisting}
@@ -584,8 +625,17 @@ A síntese será realizada no Quartus Prime, considerando a mesma hierarquia ado
   \end{tabular}
 \end{table}
 
-\chapter{Conclusões Parciais}
-O projeto encontra-se em estágio funcional, com os blocos de controle e datapath implementados e integrados. A metodologia de projeto RTL foi seguida rigorosamente: partiu-se do algoritmo em C, derivou-se uma FSM de alto nível, identificaram-se os sinais necessários e codificaram-se os módulos em VHDL com a convenção estabelecida. As próximas atividades concentram-se na coleta de evidências experimentais (simulações e síntese) e no refinamento do relatório com base nesses resultados.
+\chapter{Conclusão e Próximos Passos}
+O sistema encontra-se funcional em simulação comportamental, com controle e caminho de dados aderentes ao particionamento proposto e ao handshake definido no enunciado. Foram documentados o algoritmo de referência, a FSM resultante, os sinais internos e os módulos VHDL correspondentes.
+
+Para finalizar o trabalho e preencher as seções reservadas, restam três atividades práticas:
+\begin{enumerate}[label=\alph*)]
+  \item Executar o \textit{testbench} no ModelSim/Questa, capturar as formas de onda dos principais sinais e registrar eventuais mensagens de \textit{assert}.
+  \item Compilar o projeto no Quartus Prime, exportar o diagrama RTL e preencher a Tabela~\ref{tab:resource-usage} com os recursos utilizados e a frequência máxima.
+  \item Inserir no texto comentários sintéticos sobre os resultados obtidos (tempo de convergência observado, recursos, limitações).
+\end{enumerate}
+
+Após essas etapas, recomenda-se uma revisão final para inserir as figuras geradas e atualizar a discussão dos resultados na Figura~\ref{fig:simulation-waveforms} e na Tabela~\ref{tab:resource-usage}, encerrando a avaliação.
 
 \postextual
 \phantomsection

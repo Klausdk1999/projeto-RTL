@@ -1,0 +1,154 @@
+# Reading pref.tcl
+# vsim -gui . 
+# Start time: 13:53:42 on Nov 09,2025
+# ** Error (suppressible): (vsim-19) Failed to access library '' at "".
+# Invalid argument. (errno = EINVAL)
+# Error loading design
+# End time: 13:53:42 on Nov 09,2025, Elapsed time: 0:00:00
+# Errors: 1, Warnings: 0
+do simulate.tcl
+# ** Error (suppressible): (vdel-19) Failed to access library 'work' at "work".
+# No such file or directory. (errno = ENOENT)
+# ** Warning: (vdel-57) Library 'work' is missing or is not a valid ModelSim library.
+# ** Error: C:/intelFPGA_lite/20.1/modelsim_ase/win32aloem/vdel failed.
+# Error in macro ./simulate.tcl line 6
+# C:/intelFPGA_lite/20.1/modelsim_ase/win32aloem/vdel failed.
+#     while executing
+# "error [FixExecError $msg]"
+#     (procedure "vdel" line 6)
+#     invoked from within
+# "vdel -all"
+do simulate.tcl
+# ** Error (suppressible): (vdel-19) Failed to access library 'work' at "work".
+# No such file or directory. (errno = ENOENT)
+# ** Warning: (vdel-57) Library 'work' is missing or is not a valid ModelSim library.
+# ** Error: C:/intelFPGA_lite/20.1/modelsim_ase/win32aloem/vdel failed.
+# Error in macro ./simulate.tcl line 6
+# C:/intelFPGA_lite/20.1/modelsim_ase/win32aloem/vdel failed.
+#     while executing
+# "error [FixExecError $msg]"
+#     (procedure "vdel" line 6)
+#     invoked from within
+# "vdel -all"
+do simulate.tcl
+# Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 13:55:17 on Nov 09,2025
+# vcom -reportprogress 300 -2008 mdc_datapath.vhd 
+# ** Error: (vcom-66) Execution of vlib.exe failed. Please check the error log for more details.
+# End time: 13:55:17 on Nov 09,2025, Elapsed time: 0:00:00
+# Errors: 1, Warnings: 0
+# ** Error: C:/intelFPGA_lite/20.1/modelsim_ase/win32aloem/vcom failed.
+# Error in macro ./simulate.tcl line 10
+# C:/intelFPGA_lite/20.1/modelsim_ase/win32aloem/vcom failed.
+#     while executing
+# "vcom -2008 mdc_datapath.vhd"
+do simulate.tcl
+# Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 13:56:56 on Nov 09,2025
+# vcom -reportprogress 300 datapath.vhd 
+# ** Error: (vcom-66) Execution of vlib.exe failed. Please check the error log for more details.
+# End time: 13:56:56 on Nov 09,2025, Elapsed time: 0:00:00
+# Errors: 1, Warnings: 0
+# ** Error: C:/intelFPGA_lite/20.1/modelsim_ase/win32aloem/vcom failed.
+# Error in macro ./simulate.tcl line 10
+# C:/intelFPGA_lite/20.1/modelsim_ase/win32aloem/vcom failed.
+#     while executing
+# "vcom datapath.vhd"
+do simulate.tcl
+# Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 13:57:38 on Nov 09,2025
+# vcom -reportprogress 300 -2008 datapath.vhd 
+# ** Error: (vcom-66) Execution of vlib.exe failed. Please check the error log for more details.
+# End time: 13:57:38 on Nov 09,2025, Elapsed time: 0:00:00
+# Errors: 1, Warnings: 0
+# ** Error: C:/intelFPGA_lite/20.1/modelsim_ase/win32aloem/vcom failed.
+# Error in macro ./simulate.tcl line 10
+# C:/intelFPGA_lite/20.1/modelsim_ase/win32aloem/vcom failed.
+#     while executing
+# "vcom -2008 datapath.vhd"
+do simulate.tcl
+# ** Error (suppressible): (vdel-19) Failed to access library 'work' at "work".
+# No such file or directory. (errno = ENOENT)
+# ** Warning: (vdel-57) Library 'work' is missing or is not a valid ModelSim library.
+# ** Error: C:/intelFPGA_lite/20.1/modelsim_ase/win32aloem/vdel failed.
+# Error in macro ./simulate.tcl line 6
+# C:/intelFPGA_lite/20.1/modelsim_ase/win32aloem/vdel failed.
+#     while executing
+# "error [FixExecError $msg]"
+#     (procedure "vdel" line 6)
+#     invoked from within
+# "vdel -all"
+ls
+# control.vhd  datapath.vhd  simulate.tcl  tb_mdc.vhd  top_mdc.vhd  transcript  
+vlib work
+do simulate.tcl
+# Model Technology ModelSim - Intel FPGA Edition vmap 2020.1 Lib Mapping Utility 2020.02 Feb 28 2020
+# vmap work work 
+# Copying C:/intelFPGA_lite/20.1/modelsim_ase/win32aloem/../modelsim.ini to modelsim.ini
+# Modifying modelsim.ini
+# Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 14:01:29 on Nov 09,2025
+# vcom -reportprogress 300 -2008 datapath.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling entity datapath
+# -- Compiling architecture rtl of datapath
+# End time: 14:01:29 on Nov 09,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 14:01:29 on Nov 09,2025
+# vcom -reportprogress 300 -2008 control.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling entity control
+# -- Compiling architecture rtl of control
+# End time: 14:01:29 on Nov 09,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 14:01:29 on Nov 09,2025
+# vcom -reportprogress 300 -2008 top_mdc.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling entity mdc_top
+# -- Compiling architecture rtl of mdc_top
+# -- Loading entity datapath
+# -- Loading entity control
+# End time: 14:01:29 on Nov 09,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 14:01:29 on Nov 09,2025
+# vcom -reportprogress 300 -2008 tb_mdc.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling entity tb_mdc
+# -- Compiling architecture sim of tb_mdc
+# -- Loading entity mdc_top
+# End time: 14:01:29 on Nov 09,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vsim work.tb_mdc 
+# Start time: 14:01:29 on Nov 09,2025
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.tb_mdc(sim)
+# Loading work.mdc_top(rtl)
+# Loading work.datapath(rtl)
+# Loading work.control(rtl)
+# ** Warning: NUMERIC_STD."<": metavalue detected, returning FALSE
+#    Time: 0 ps  Iteration: 0  Instance: /tb_mdc/u_dut/u_datapath
+# ** Note: SIMULATION COMPLETE
+#    Time: 405 ns  Iteration: 0  Instance: /tb_mdc
+write format wave -window .main_pane.wave.interior.cs.body.pw.wf D:/Mestrado/sistemas_digitais/T3/mdc/wave.do
+# Break key hit
+# Break in Process p_reg_y at datapath.vhd line 61
+# End time: 21:57:41 on Nov 09,2025, Elapsed time: 7:56:12
+# Errors: 0, Warnings: 1
