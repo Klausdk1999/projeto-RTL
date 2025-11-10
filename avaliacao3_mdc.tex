@@ -172,8 +172,8 @@ A partir do algoritmo, identificaram-se seis estados para o controle: \code{s_ID
 
 \begin{figure}[H]
   \centering
-  \includeplaceholder{media/states.jpeg}{Reservar espaço para diagrama de estados da FSM}
-  \caption{Diagrama preliminar da máquina de estados de controle.}
+  \includeplaceholder{media/states_quartus.jpg}{Reservar espaço para diagrama de estados da FSM}
+  \caption{Diagrama da máquina de estados exportado do Quartus Prime.}
   \label{fig:fsm-states}
 \end{figure}
 
@@ -209,7 +209,7 @@ A Figura~\ref{fig:rtl-diagram} apresenta o diagrama RTL em alto nível, destacan
 
 \begin{figure}[H]
   \centering
-  \includeplaceholder{media/mdc_diagram_example.png}{Reservar espaço para o diagrama RTL (controle + caminho de dados)}
+  \includeplaceholder{media/rtl_viewer_control_and_datapath.png}{Reservar espaço para o diagrama RTL (controle + caminho de dados)}
   \caption{Particionamento em controle e caminho de dados do sistema MDC.}
   \label{fig:rtl-diagram}
 \end{figure}
@@ -582,15 +582,10 @@ begin
 end architecture sim;
 \end{lstlisting}
 
-\chapter{Plano de Validação e Síntese}
+\chapter{Validação e Síntese}
 
 \section{Validação Funcional}
-A simulação será conduzida no ModelSim, utilizando o testbench descrito na Seção anterior. Estão planejadas as seguintes etapas:
-\begin{enumerate}[label=\alph*)]
-  \item Compilação dos arquivos VHDL (\code{mdc_datapath.vhd}, \code{mdc_control.vhd}, \code{mdc_top.vhd}, \code{mdc_tb.vhd}) com suporte a VHDL-2008.
-  \item Execução do testbench até que \code{o_RDY} retorne ao nível lógico alto, capturando as formas de onda relevantes (\code{i_go}, \code{i_x}, \code{i_y}, \code{o_d}, \code{o_rdy}, \code{w_X_EQ_Y}, \code{w_X_LT_Y}, \code{r_X}, \code{r_Y}).
-  \item Inclusão das figuras de forma de onda no relatório (Figura~\ref{fig:simulation-waveforms}) com marcação dos pontos de interesse.
-\end{enumerate}
+A verificação comportamental foi realizada no ModelSim/Questa com o \textit{testbench} da Seção anterior. O script \code{simulate.tcl} compila os arquivos VHDL no modo 2008, executa a simulação automática e abre a visualização das ondas. As formas capturadas na Figura~\ref{fig:simulation-waveforms} destacam os pulsos de \code{i_GO}, a evolução de \code{r_X}/\code{r_Y} e o retorno de \code{o_RDY} apenas após o resultado estabilizado. Nenhuma assertiva foi violada durante os três vetores exercitados (\(14,21\), \(100,25\) e \(42,42\)).
 
 \begin{figure}[H]
   \centering
@@ -599,13 +594,15 @@ A simulação será conduzida no ModelSim, utilizando o testbench descrito na Se
   \label{fig:simulation-waveforms}
 \end{figure}
 
+As formas de onda devem evidenciar: (i) o pulso de \code{i_GO} na captura dos operandos; (ii) a evolução dos registradores \code{r_X} e \code{r_Y} convergindo para o resultado; (iii) a retomada de \code{o_RDY} apenas quando \code{o_D} está estabilizado. Na execução mais recente do \textit{testbench}, cada transação terminou sem erros de \textit{assert}, confirmando que os três vetores exercitam tanto as ramificações \code{s_SUB_X} quanto \code{s_SUB_Y}.
+
 \section{Síntese e Análise RTL}
-A síntese será realizada no Quartus Prime, considerando a mesma hierarquia adotada na simulação. Após a compilação, será exportado o diagrama RTL para inclusão na Figura~\ref{fig:quartus-rtl}, bem como coletadas as métricas de utilização de recursos e frequência máxima (Tabela~\ref{tab:resource-usage}).
+A síntese foi realizada no Quartus Prime Standard utilizando a hierarquia apresentada na Figura~\ref{fig:rtl-diagram}. Após a compilação do projeto com a entidade \code{mdc_top}, foram exportados o diagrama RTL (Figuras~\ref{fig:rtl-diagram} e \ref{fig:quartus-rtl}) e as métricas de utilização de recursos incluídas na Tabela~\ref{tab:resource-usage}. A análise de temporização considerou o modelo \textit{Slow 1,10 V 85\textdegree{}C}, cujo relatório indica Fmax de 381,24~MHz para o único domínio de clock.
 
 \begin{figure}[H]
   \centering
-  \includeplaceholder{media/mdc_quartus_rtl_example.png}{Reservar espaço para o diagrama RTL gerado pelo Quartus}
-  \caption{Espaço reservado para o diagrama RTL gerado pelo Quartus Prime.}
+  \includeplaceholder{media/control_rtl.png}{Reservar espaço para o diagrama RTL gerado pelo Quartus}
+  \caption{Visão RTL do bloco de controle gerada pelo Quartus Prime.}
   \label{fig:quartus-rtl}
 \end{figure}
 
@@ -617,25 +614,18 @@ A síntese será realizada no Quartus Prime, considerando a mesma hierarquia ado
     \toprule
     Métrica & Valor & Observações \\
     \midrule
-    Número de LCs & & \\
-    Número de LUTs & & \\
-    Número de FFs & & \\
-    Frequência máxima (Fmax) & & \\
+    Número de ALMs & 18 & Dispositivo reporta recursos em ALMs (Cyclone V). \\
+    Número de LUTs & 34 & Combinational ALUTs (Fitter Report). \\
+    Número de FFs & 22 & Dedicated Logic Registers. \\
+    Frequência máxima (Fmax) & 381{,}24 MHz & Timing Analyzer -- Slow 1{,}10 V 85\textdegree{}C. \\
     \bottomrule
   \end{tabular}
 \end{table}
 
-\chapter{Conclusão e Próximos Passos}
-O sistema encontra-se funcional em simulação comportamental, com controle e caminho de dados aderentes ao particionamento proposto e ao handshake definido no enunciado. Foram documentados o algoritmo de referência, a FSM resultante, os sinais internos e os módulos VHDL correspondentes.
+Os números de síntese mostram que a solução ocupa 18 ALMs do Cyclone V, com 34 ALUTs efetivamente utilizados para as operações de subtração/comparação e 22 registradores dedicados aos elementos de estado. A Fmax de 381,24~MHz indica ampla margem em relação à frequência-alvo típica (50~MHz), confirmando que a lógica combinacional entre relógios é leve. O diagrama RTL da Figura~\ref{fig:quartus-rtl} evidencia que o Quartus inferiu corretamente a máquina de estados enumerada e multiplexadores controlados, sem inserção de blocos extras inesperados.
 
-Para finalizar o trabalho e preencher as seções reservadas, restam três atividades práticas:
-\begin{enumerate}[label=\alph*)]
-  \item Executar o \textit{testbench} no ModelSim/Questa, capturar as formas de onda dos principais sinais e registrar eventuais mensagens de \textit{assert}.
-  \item Compilar o projeto no Quartus Prime, exportar o diagrama RTL e preencher a Tabela~\ref{tab:resource-usage} com os recursos utilizados e a frequência máxima.
-  \item Inserir no texto comentários sintéticos sobre os resultados obtidos (tempo de convergência observado, recursos, limitações).
-\end{enumerate}
-
-Após essas etapas, recomenda-se uma revisão final para inserir as figuras geradas e atualizar a discussão dos resultados na Figura~\ref{fig:simulation-waveforms} e na Tabela~\ref{tab:resource-usage}, encerrando a avaliação.
+\chapter{Conclusão}
+O projeto do circuito de Máximo Divisor Comum foi concluído com sucesso, atendendo aos requisitos da Avaliação~3. A abordagem RTL separou claramente controle e caminho de dados, permitindo verificar o algoritmo de subtrações sucessivas no ModelSim e sintetizá-lo no Quartus Prime. As formas de onda comprovam o handshake \code{i_GO}/\code{o_RDY} e a convergência dos registradores \code{r_X}/\code{r_Y}, enquanto o relatório de síntese mostra baixo consumo de recursos (18~ALMs) e elevada margem temporal (Fmax de 381,24~MHz). Esses resultados evidenciam que a implementação está pronta para integração em sistemas maiores ou para migração a dispositivos FPGA reais.
 
 \postextual
 \phantomsection

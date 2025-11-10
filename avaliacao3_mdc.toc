@@ -17,20 +17,20 @@
 \contentsline {chapter}{\chapternumberline {4}\MakeTextUppercase []{Arquitetura RTL Proposta}}{8}{chapter.4}%
 \contentsline {section}{\numberline {4.1}Visão Geral}{8}{section.4.1}%
 \contentsline {section}{\numberline {4.2}Bloco de Controle}{8}{section.4.2}%
-\contentsline {section}{\numberline {4.3}Caminho de Dados}{8}{section.4.3}%
+\contentsline {section}{\numberline {4.3}Caminho de Dados}{9}{section.4.3}%
 \setlength {\cftchapterindent }{0em} \setlength {\cftchapternumwidth }{\cftlastnumwidth }
-\contentsline {chapter}{\chapternumberline {5}\MakeTextUppercase []{Implementação em VHDL}}{9}{chapter.5}%
-\contentsline {section}{\numberline {5.1}Módulo Topo}{9}{section.5.1}%
-\contentsline {section}{\numberline {5.2}Máquina de Controle}{11}{section.5.2}%
-\contentsline {section}{\numberline {5.3}Caminho de Dados}{13}{section.5.3}%
-\contentsline {section}{\numberline {5.4}Testbench}{15}{section.5.4}%
+\contentsline {chapter}{\chapternumberline {5}\MakeTextUppercase []{Implementação em VHDL}}{10}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Módulo Topo}{10}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Máquina de Controle}{12}{section.5.2}%
+\contentsline {section}{\numberline {5.3}Caminho de Dados}{14}{section.5.3}%
+\contentsline {section}{\numberline {5.4}Testbench}{16}{section.5.4}%
 \setlength {\cftchapterindent }{0em} \setlength {\cftchapternumwidth }{\cftlastnumwidth }
-\contentsline {chapter}{\chapternumberline {6}\MakeTextUppercase []{Plano de Validação e Síntese}}{19}{chapter.6}%
-\contentsline {section}{\numberline {6.1}Validação Funcional}{19}{section.6.1}%
-\contentsline {section}{\numberline {6.2}Síntese e Análise RTL}{19}{section.6.2}%
+\contentsline {chapter}{\chapternumberline {6}\MakeTextUppercase []{Validação e Síntese}}{20}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Validação Funcional}{20}{section.6.1}%
+\contentsline {section}{\numberline {6.2}Síntese e Análise RTL}{20}{section.6.2}%
 \setlength {\cftchapterindent }{0em} \setlength {\cftchapternumwidth }{\cftlastnumwidth }
-\contentsline {chapter}{\chapternumberline {7}\MakeTextUppercase []{Conclusão e Próximos Passos}}{21}{chapter.7}%
+\contentsline {chapter}{\chapternumberline {7}\MakeTextUppercase []{Conclusão}}{22}{chapter.7}%
 \vspace {\cftbeforechapterskip }
-\contentsline {chapter}{Referências}{21}{section*.11}%
+\contentsline {chapter}{Referências}{22}{section*.11}%
 \setlength {\cftchapterindent }{\cftlastnumwidth } \setlength {\cftchapternumwidth }{2em}
-\contentsline {chapter}{\MakeTextUppercase []{Refer\^encias}}{22}{section*.14}%
+\contentsline {chapter}{\MakeTextUppercase []{Refer\^encias}}{23}{section*.14}%
