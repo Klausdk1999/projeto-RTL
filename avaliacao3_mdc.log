@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.11.9)  10 NOV 2025 20:51
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.11.9)  11 NOV 2025 15:59
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1115,7 +1115,7 @@ nput line 132.
 [5
 
 ]
-<media/states.jpeg, id=127, 945.5325pt x 650.43pt>
+<media/states.jpeg, id=125, 945.5325pt x 650.43pt>
 File: media/states.jpeg Graphic file (type jpg)
 <use media/states.jpeg>
 Package pdftex.def Info: media/states.jpeg  used on input line 174.
@@ -1146,7 +1146,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 195--195
 
 [7]
 Cap\'{\i }tulo 4.
-<media/rtl_viewer_control_and_datapath.png, id=145, 825.83531pt x 420.82219pt>
+<media/rtl_viewer_control_and_datapath.png, id=143, 825.83531pt x 420.82219pt>
 File: media/rtl_viewer_control_and_datapath.png Graphic file (type png)
 <use media/rtl_viewer_control_and_datapath.png>
 Package pdftex.def Info: media/rtl_viewer_control_and_datapath.png  used on inp
@@ -1186,7 +1186,7 @@ File: lstlang1.sty 2024/09/23 1.10c listings language file
 
 [19]
 Cap\'{\i }tulo 6.
-<media/mdc_waveforms_example.png, id=544, 946.53625pt x 434.62375pt>
+<media/mdc_waveforms_example.png, id=542, 946.53625pt x 434.62375pt>
 File: media/mdc_waveforms_example.png Graphic file (type png)
 <use media/mdc_waveforms_example.png>
 Package pdftex.def Info: media/mdc_waveforms_example.png  used on input line 59
@@ -1197,7 +1197,7 @@ LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 5
 (C:\Users\Klaus\AppData\Local\Programs\MiKTeX\tex/latex/lm\ts1lmr.fd
 File: ts1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-<media/states_quartus.jpg, id=549, 1026.83624pt x 448.67625pt>
+<media/states_quartus.jpg, id=547, 1026.83624pt x 448.67625pt>
 File: media/states_quartus.jpg Graphic file (type jpg)
 <use media/states_quartus.jpg>
 Package pdftex.def Info: media/states_quartus.jpg  used on input line 603.
@@ -1210,7 +1210,7 @@ Package pdftex.def Info: media/states_quartus.jpg  used on input line 603.
 Users/Klaus/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathit.enc}{C:/
 Users/Klaus/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ts1.enc} <./med
 ia/mdc_waveforms_example.png>]
-<media/control_rtl.png, id=561, 1298.60156pt x 735.49782pt>
+<media/control_rtl.png, id=559, 1298.60156pt x 735.49782pt>
 File: media/control_rtl.png Graphic file (type png)
 <use media/control_rtl.png>
 Package pdftex.def Info: media/control_rtl.png  used on input line 610.
@@ -1267,31 +1267,34 @@ L3 programming layer <2020/03/25>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 22833 strings out of 468079
- 369492 string characters out of 5425751
+ 22831 strings out of 468079
+ 369475 string characters out of 5425751
  1243385 words of memory out of 5000000
- 50643 multiletter control sequences out of 15000+600000
+ 50642 multiletter control sequences out of 15000+600000
  693701 words of font info for 140 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  99i,13n,107p,1013b,2158s stack positions out of 10000i,1000n,20000p,200000b,200000s
-<C:/Users/Klaus/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx12.pf
-b><C:/Users/Klaus/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi12.pf
-b><C:/Users/Klaus/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr10.pfb
-><C:/Users/Klaus/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr12.pfb>
-<C:/Users/Klaus/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr8.pfb><C
-:/Users/Klaus/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmri10.pfb><C
-:/Users/Klaus/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmri12.pfb><C
-:/Users/Klaus/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmss12.pfb><C
-:/Users/Klaus/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmss17.pfb><C
-:/Users/Klaus/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmssbx10.pfb>
-<C:/Users/Klaus/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy10.pfb>
-<C:/Users/Klaus/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtk10.pfb>
-<C:/Users/Klaus/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt10.pfb>
-<C:/Users/Klaus/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt12.pfb>
 
-Output written on avaliacao3_mdc.pdf (25 pages, 788810 bytes).
+pdfTeX warning (dest): name{section*.14} has been referenced but does not exist
+, replaced by a fixed one
+
+<C:/Users/Klaus/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx12.pfb>
+<C:/Users/Klaus/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi12.pfb>
+<C:/Users/Klaus/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr10.pfb><
+C:/Users/Klaus/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr12.pfb><C
+:/Users/Klaus/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr8.pfb><C:/
+Users/Klaus/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmri10.pfb><C:/
+Users/Klaus/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmri12.pfb><C:/
+Users/Klaus/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmss12.pfb><C:/
+Users/Klaus/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmss17.pfb><C:/
+Users/Klaus/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmssbx10.pfb><C
+:/Users/Klaus/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy10.pfb><C
+:/Users/Klaus/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtk10.pfb><C
+:/Users/Klaus/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt10.pfb><C
+:/Users/Klaus/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt12.pfb>
+Output written on avaliacao3_mdc.pdf (25 pages, 788194 bytes).
 PDF statistics:
- 818 PDF objects out of 1000 (max. 8388607)
- 438 named destinations out of 1000 (max. 500000)
- 42706 words of extra memory for PDF output out of 42996 (max. 10000000)
+ 813 PDF objects out of 1000 (max. 8388607)
+ 437 named destinations out of 1000 (max. 500000)
+ 42698 words of extra memory for PDF output out of 42996 (max. 10000000)
 

@@ -633,9 +633,7 @@ Os números de síntese mostram que a solução ocupa 18 ALMs do Cyclone V, com 
 \chapter{Conclusão}
 O projeto do circuito de Máximo Divisor Comum foi concluído com sucesso, atendendo aos requisitos da Avaliação~3. A abordagem RTL separou claramente controle e caminho de dados, permitindo verificar o algoritmo de subtrações sucessivas no ModelSim e sintetizá-lo no Quartus Prime. As formas de onda comprovam o handshake \code{i_GO}/\code{o_RDY} e a convergência dos registradores \code{r_X}/\code{r_Y}, enquanto o relatório de síntese mostra baixo consumo de recursos (18~ALMs) e elevada margem temporal (Fmax de 381,24~MHz). Esses resultados evidenciam que a implementação está pronta para integração em sistemas maiores ou para migração a dispositivos FPGA reais.
 
-\postextual
-\phantomsection
-\addcontentsline{toc}{chapter}{Referências}
+%\postextual
 \begin{thebibliography}{9}
 \bibitem{vhdl-guide} Xilinx. \textit{VHDL Coding Style Guidelines}. AMD Adaptive Computing Documentation, 2023.
 \bibitem{quartus} Intel. \textit{Quartus Prime Standard Edition User Guide}. 2024.
