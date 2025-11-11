@@ -1,5 +1,5 @@
 Flow report for mdc
-Mon Nov 10 20:05:25 2025
+Tue Nov 11 19:39:14 2025
 Quartus Prime Version 20.1.0 Build 711 06/05/2020 SJ Lite Edition
 
 
@@ -41,10 +41,10 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------------------------------------------------+
 ; Flow Summary                                                                  ;
 +---------------------------------+---------------------------------------------+
-; Flow Status                     ; Successful - Mon Nov 10 20:05:22 2025       ;
+; Flow Status                     ; Successful - Tue Nov 11 19:39:10 2025       ;
 ; Quartus Prime Version           ; 20.1.0 Build 711 06/05/2020 SJ Lite Edition ;
 ; Revision Name                   ; mdc                                         ;
-; Top-level Entity Name           ; mdc_top                                     ;
+; Top-level Entity Name           ; top_mdc                                     ;
 ; Family                          ; Cyclone V                                   ;
 ; Device                          ; 5CSEMA6F31C6                                ;
 ; Timing Models                   ; Final                                       ;
@@ -68,7 +68,7 @@ https://fpgasoftware.intel.com/eula.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 11/10/2025 20:04:42 ;
+; Start date & time ; 11/11/2025 19:37:48 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; mdc                 ;
 +-------------------+---------------------+
@@ -79,16 +79,16 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------+----------------------------------------+---------------+-------------+------------+
 ; Assignment Name                     ; Value                                  ; Default Value ; Entity Name ; Section Id ;
 +-------------------------------------+----------------------------------------+---------------+-------------+------------+
-; COMPILER_SIGNATURE_ID               ; 176667565732126.176281588202268        ; --            ; --          ; --         ;
+; COMPILER_SIGNATURE_ID               ; 264024523270378.176290066805412        ; --            ; --          ; --         ;
 ; MAX_CORE_JUNCTION_TEMP              ; 85                                     ; --            ; --          ; --         ;
 ; MIN_CORE_JUNCTION_TEMP              ; 0                                      ; --            ; --          ; --         ;
-; PARTITION_COLOR                     ; -- (Not supported for targeted family) ; --            ; mdc_top     ; Top        ;
-; PARTITION_FITTER_PRESERVATION_LEVEL ; -- (Not supported for targeted family) ; --            ; mdc_top     ; Top        ;
-; PARTITION_NETLIST_TYPE              ; -- (Not supported for targeted family) ; --            ; mdc_top     ; Top        ;
+; PARTITION_COLOR                     ; -- (Not supported for targeted family) ; --            ; top_mdc     ; Top        ;
+; PARTITION_FITTER_PRESERVATION_LEVEL ; -- (Not supported for targeted family) ; --            ; top_mdc     ; Top        ;
+; PARTITION_NETLIST_TYPE              ; -- (Not supported for targeted family) ; --            ; top_mdc     ; Top        ;
 ; POWER_BOARD_THERMAL_MODEL           ; None (CONSERVATIVE)                    ; --            ; --          ; --         ;
 ; POWER_PRESET_COOLING_SOLUTION       ; 23 MM HEAT SINK WITH 200 LFPM AIRFLOW  ; --            ; --          ; --         ;
 ; PROJECT_OUTPUT_DIRECTORY            ; output_files                           ; --            ; --          ; --         ;
-; TOP_LEVEL_ENTITY                    ; mdc_top                                ; mdc           ; --          ; --         ;
+; TOP_LEVEL_ENTITY                    ; top_mdc                                ; mdc           ; --          ; --         ;
 +-------------------------------------+----------------------------------------+---------------+-------------+------------+
 
 
@@ -97,11 +97,11 @@ https://fpgasoftware.intel.com/eula.
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis ; 00:00:05     ; 1.0                     ; 4905 MB             ; 00:00:09                           ;
-; Fitter               ; 00:00:27     ; 1.0                     ; 7331 MB             ; 00:01:47                           ;
-; Assembler            ; 00:00:05     ; 1.0                     ; 4838 MB             ; 00:00:03                           ;
-; Timing Analyzer      ; 00:00:03     ; 1.1                     ; 5212 MB             ; 00:00:02                           ;
-; Total                ; 00:00:40     ; --                      ; --                  ; 00:02:01                           ;
+; Analysis & Synthesis ; 00:00:06     ; 1.0                     ; 4894 MB             ; 00:00:14                           ;
+; Fitter               ; 00:01:02     ; 1.0                     ; 7096 MB             ; 00:03:45                           ;
+; Assembler            ; 00:00:12     ; 1.0                     ; 4850 MB             ; 00:00:04                           ;
+; Timing Analyzer      ; 00:00:03     ; 1.1                     ; 5196 MB             ; 00:00:03                           ;
+; Total                ; 00:01:23     ; --                      ; --                  ; 00:04:06                           ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
@@ -110,10 +110,10 @@ https://fpgasoftware.intel.com/eula.
 +----------------------+------------------+------------+------------+----------------+
 ; Module Name          ; Machine Hostname ; OS Name    ; OS Version ; Processor type ;
 +----------------------+------------------+------------+------------+----------------+
-; Analysis & Synthesis ; DESKTOP-UIE553G  ; Windows 10 ; 10.0       ; x86_64         ;
-; Fitter               ; DESKTOP-UIE553G  ; Windows 10 ; 10.0       ; x86_64         ;
-; Assembler            ; DESKTOP-UIE553G  ; Windows 10 ; 10.0       ; x86_64         ;
-; Timing Analyzer      ; DESKTOP-UIE553G  ; Windows 10 ; 10.0       ; x86_64         ;
+; Analysis & Synthesis ; Fabricio         ; Windows 10 ; 10.0       ; x86_64         ;
+; Fitter               ; Fabricio         ; Windows 10 ; 10.0       ; x86_64         ;
+; Assembler            ; Fabricio         ; Windows 10 ; 10.0       ; x86_64         ;
+; Timing Analyzer      ; Fabricio         ; Windows 10 ; 10.0       ; x86_64         ;
 +----------------------+------------------+------------+------------+----------------+
 
 

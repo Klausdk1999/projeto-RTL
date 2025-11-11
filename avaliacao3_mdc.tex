@@ -167,7 +167,7 @@ int main(void)
 \end{lstlisting}
 
 \section{Derivação da Máquina de Estados}
-A partir do algoritmo, identificaram-se seis estados para o controle: \code{s_IDLE}, \code{s_LOAD}, \code{s_COMPARE}, \code{s_SUB_X}, \code{s_SUB_Y} e \code{s_DONE}. A Figura~\ref{fig:fsm-states} mostra o diagrama desenhado manualmente (\code{media/states.jpeg}); na Seção de síntese, a Figura~\ref{fig:fsm-states-quartus} confirma essa mesma FSM exportada pelo Quartus Prime. A Tabela~\ref{tab:fsm-transicoes} detalha as transições e saídas relevantes.
+A partir do algoritmo, identificaram-se seis estados para o controle: \code{s_IDLE}, \code{s_LOAD}, \code{s_COMPARE}, \code{s_SUB_X}, \code{s_SUB_Y} e \code{s_DONE}. A Figura~\ref{fig:fsm-states} mostra o diagrama desenhado manualmente na Seção de síntese, a Figura~\ref{fig:fsm-states-quartus} confirma essa mesma FSM exportada pelo Quartus Prime. A Tabela~\ref{tab:fsm-transicoes} detalha as transições e saídas relevantes.
 
 \begin{figure}[H]
   \centering
@@ -220,7 +220,7 @@ O bloco \code{mdc_control} é responsável por sequenciar o algoritmo, garantind
 O caminho de dados mantém os operandos em registradores e atualiza seus valores com base na decisão do controle. As subtrações são realizadas em paralelo, permitindo que o controlador selecione o resultado correto com atraso mínimo. O resultado final é exposto diretamente em \code{o_D}, que é repassado ao módulo topo.
 
 \chapter{Implementação em VHDL}
-Os códigos foram escritos seguindo o guia de estilo da avaliação: palavras reservadas em minúsculas, sinais em maiúsculas com prefixos (\code{i_}, \code{o_}, \code{w_}, \code{r_}), tabulação de dois espaços e comentários em inglês para evitar problemas de codificação.
+Os códigos foram escritos seguindo o guia de estilo da avaliação: palavras reservadas em minúsculas, sinais em maiúsculas com prefixos (\code{i_}, \code{o_}, \code{w_}, \code{r_}), tabulação de dois espaços.
 
 \section{Módulo Topo}
 A Listagem~\ref{lst:vhdl_top} mostra o módulo topo \code{mdc_top}, responsável por conectar os blocos de controle e caminho de dados e disponibilizar a interface externa.

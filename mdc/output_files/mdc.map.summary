@@ -1,7 +1,7 @@
-Analysis & Synthesis Status : Successful - Mon Nov 10 20:04:47 2025
+Analysis & Synthesis Status : Successful - Tue Nov 11 19:37:54 2025
 Quartus Prime Version : 20.1.0 Build 711 06/05/2020 SJ Lite Edition
 Revision Name : mdc
-Top-level Entity Name : mdc_top
+Top-level Entity Name : top_mdc
 Family : Cyclone V
 Logic utilization (in ALMs) : N/A
 Total registers : 22

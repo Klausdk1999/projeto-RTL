@@ -1,5 +1,5 @@
 
-State Machine - |mdc_top|mdc_control:u_control|s_CUR
+State Machine - |top_mdc|mdc_control:u_control|s_CUR
 Name s_CUR.s_DONE s_CUR.s_SUB_X s_CUR.s_SUB_Y s_CUR.s_CHECK s_CUR.s_LOAD s_CUR.s_IDLE 
 s_CUR.s_IDLE 0 0 0 0 0 0 
 s_CUR.s_LOAD 0 0 0 0 1 1 

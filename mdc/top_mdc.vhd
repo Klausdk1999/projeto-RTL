@@ -2,7 +2,7 @@ library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
-entity mdc_top is
+entity top_mdc is
   port (
     i_CLK  : in  std_logic;
     i_RSTn : in  std_logic;
@@ -12,9 +12,9 @@ entity mdc_top is
     o_D    : out std_logic_vector(7 downto 0);
     o_RDY  : out std_logic
   );
-end entity mdc_top;
+end entity top_mdc;
 
-architecture rtl of mdc_top is
+architecture rtl of top_mdc is
 
   -- wires between control and datapath
   signal w_Rx_ld     : std_logic;

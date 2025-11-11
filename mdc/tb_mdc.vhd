@@ -20,7 +20,7 @@ architecture sim of tb_mdc is
 begin
 
   -- instantiate DUT
-  u_dut : entity work.mdc_top
+  u_dut : entity work.top_mdc
     port map (
       i_CLK  => i_CLK,
       i_RSTn => i_RSTn,

@@ -1,5 +1,5 @@
 Analysis & Synthesis report for mdc
-Mon Nov 10 20:04:47 2025
+Tue Nov 11 19:37:54 2025
 Quartus Prime Version 20.1.0 Build 711 06/05/2020 SJ Lite Edition
 
 
@@ -13,7 +13,7 @@ Quartus Prime Version 20.1.0 Build 711 06/05/2020 SJ Lite Edition
   5. Analysis & Synthesis Source Files Read
   6. Analysis & Synthesis Resource Usage Summary
   7. Analysis & Synthesis Resource Utilization by Entity
-  8. State Machine - |mdc_top|mdc_control:u_control|s_CUR
+  8. State Machine - |top_mdc|mdc_control:u_control|s_CUR
   9. General Register Statistics
  10. Multiplexer Restructuring Statistics (Restructuring Performed)
  11. Post-Synthesis Netlist Statistics for Top Partition
@@ -45,10 +45,10 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                  ;
 +---------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status     ; Successful - Mon Nov 10 20:04:47 2025       ;
+; Analysis & Synthesis Status     ; Successful - Tue Nov 11 19:37:54 2025       ;
 ; Quartus Prime Version           ; 20.1.0 Build 711 06/05/2020 SJ Lite Edition ;
 ; Revision Name                   ; mdc                                         ;
-; Top-level Entity Name           ; mdc_top                                     ;
+; Top-level Entity Name           ; top_mdc                                     ;
 ; Family                          ; Cyclone V                                   ;
 ; Logic utilization (in ALMs)     ; N/A                                         ;
 ; Total registers                 ; 22                                          ;
@@ -71,7 +71,7 @@ https://fpgasoftware.intel.com/eula.
 ; Option                                                                          ; Setting            ; Default Value      ;
 +---------------------------------------------------------------------------------+--------------------+--------------------+
 ; Device                                                                          ; 5CSEMA6F31C6       ;                    ;
-; Top-level entity name                                                           ; mdc_top            ; mdc                ;
+; Top-level entity name                                                           ; top_mdc            ; mdc                ;
 ; Family name                                                                     ; Cyclone V          ; Cyclone V          ;
 ; Use smart compilation                                                           ; Off                ; Off                ;
 ; Enable parallel Assembler and Timing Analyzer during compilation                ; On                 ; On                 ;
@@ -157,15 +157,15 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------+-------------+
 ; Processors                 ; Number      ;
 +----------------------------+-------------+
-; Number detected on machine ; 12          ;
-; Maximum allowed            ; 12          ;
+; Number detected on machine ; 16          ;
+; Maximum allowed            ; 10          ;
 ;                            ;             ;
 ; Average used               ; 1.00        ;
-; Maximum used               ; 12          ;
+; Maximum used               ; 10          ;
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processors 2-12        ;   0.0%      ;
+;     Processors 2-10        ;   0.0%      ;
 +----------------------------+-------------+
 
 
@@ -174,9 +174,9 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------------+-----------------+-----------------+---------------------------------------------------------------+---------+
 ; File Name with User-Entered Path ; Used in Netlist ; File Type       ; File Name with Absolute Path                                  ; Library ;
 +----------------------------------+-----------------+-----------------+---------------------------------------------------------------+---------+
-; top_mdc.vhd                      ; yes             ; User VHDL File  ; C:/Users/Klaus/Documents/Sistemas Digitais 3/mdc/top_mdc.vhd  ;         ;
-; datapath.vhd                     ; yes             ; User VHDL File  ; C:/Users/Klaus/Documents/Sistemas Digitais 3/mdc/datapath.vhd ;         ;
-; control.vhd                      ; yes             ; User VHDL File  ; C:/Users/Klaus/Documents/Sistemas Digitais 3/mdc/control.vhd  ;         ;
+; top_mdc.vhd                      ; yes             ; User VHDL File  ; D:/Mestrado/sistemas_digitais/T3/projeto-RTL/mdc/top_mdc.vhd  ;         ;
+; datapath.vhd                     ; yes             ; User VHDL File  ; D:/Mestrado/sistemas_digitais/T3/projeto-RTL/mdc/datapath.vhd ;         ;
+; control.vhd                      ; yes             ; User VHDL File  ; D:/Mestrado/sistemas_digitais/T3/projeto-RTL/mdc/control.vhd  ;         ;
 +----------------------------------+-----------------+-----------------+---------------------------------------------------------------+---------+
 
 
@@ -212,16 +212,16 @@ https://fpgasoftware.intel.com/eula.
 +------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+----------------------------------+--------------+--------------+
 ; Compilation Hierarchy Node   ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name              ; Entity Name  ; Library Name ;
 +------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+----------------------------------+--------------+--------------+
-; |mdc_top                     ; 33 (0)              ; 22 (0)                    ; 0                 ; 0          ; 28   ; 0            ; |mdc_top                         ; mdc_top      ; work         ;
-;    |mdc_control:u_control|   ; 7 (7)               ; 6 (6)                     ; 0                 ; 0          ; 0    ; 0            ; |mdc_top|mdc_control:u_control   ; mdc_control  ; work         ;
-;    |mdc_datapath:u_datapath| ; 26 (26)             ; 16 (16)                   ; 0                 ; 0          ; 0    ; 0            ; |mdc_top|mdc_datapath:u_datapath ; mdc_datapath ; work         ;
+; |top_mdc                     ; 33 (0)              ; 22 (0)                    ; 0                 ; 0          ; 28   ; 0            ; |top_mdc                         ; top_mdc      ; work         ;
+;    |mdc_control:u_control|   ; 7 (7)               ; 6 (6)                     ; 0                 ; 0          ; 0    ; 0            ; |top_mdc|mdc_control:u_control   ; mdc_control  ; work         ;
+;    |mdc_datapath:u_datapath| ; 26 (26)             ; 16 (16)                   ; 0                 ; 0          ; 0    ; 0            ; |top_mdc|mdc_datapath:u_datapath ; mdc_datapath ; work         ;
 +------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+----------------------------------+--------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
 
 Encoding Type:  One-Hot
 +------------------------------------------------------------------------------------------------------------+
-; State Machine - |mdc_top|mdc_control:u_control|s_CUR                                                       ;
+; State Machine - |top_mdc|mdc_control:u_control|s_CUR                                                       ;
 +---------------+--------------+---------------+---------------+---------------+--------------+--------------+
 ; Name          ; s_CUR.s_DONE ; s_CUR.s_SUB_X ; s_CUR.s_SUB_Y ; s_CUR.s_CHECK ; s_CUR.s_LOAD ; s_CUR.s_IDLE ;
 +---------------+--------------+---------------+---------------+---------------+--------------+--------------+
@@ -254,9 +254,9 @@ Encoding Type:  One-Hot
 +--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------+
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                   ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------+
-; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |mdc_top|mdc_datapath:u_datapath|r_Y[7]      ;
-; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |mdc_top|mdc_datapath:u_datapath|r_X[0]      ;
-; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |mdc_top|mdc_control:u_control|s_NXT.s_SUB_Y ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |top_mdc|mdc_datapath:u_datapath|r_Y[7]      ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |top_mdc|mdc_datapath:u_datapath|r_X[0]      ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |top_mdc|mdc_control:u_control|s_NXT.s_SUB_Y ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------+
 
 
@@ -300,25 +300,25 @@ Encoding Type:  One-Hot
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 20.1.0 Build 711 06/05/2020 SJ Lite Edition
-    Info: Processing started: Mon Nov 10 20:04:42 2025
+    Info: Processing started: Tue Nov 11 19:37:47 2025
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off mdc -c mdc
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
-Info (20030): Parallel compilation is enabled and will use 12 of the 12 processors detected
+Info (20030): Parallel compilation is enabled and will use 10 of the 10 processors detected
 Info (12021): Found 2 design units, including 1 entities, in source file top_mdc.vhd
-    Info (12022): Found design unit 1: mdc_top-rtl File: C:/Users/Klaus/Documents/Sistemas Digitais 3/mdc/top_mdc.vhd Line: 17
-    Info (12023): Found entity 1: mdc_top File: C:/Users/Klaus/Documents/Sistemas Digitais 3/mdc/top_mdc.vhd Line: 5
+    Info (12022): Found design unit 1: top_mdc-rtl File: D:/Mestrado/sistemas_digitais/T3/projeto-RTL/mdc/top_mdc.vhd Line: 17
+    Info (12023): Found entity 1: top_mdc File: D:/Mestrado/sistemas_digitais/T3/projeto-RTL/mdc/top_mdc.vhd Line: 5
 Info (12021): Found 2 design units, including 1 entities, in source file tb_mdc.vhd
-    Info (12022): Found design unit 1: tb_mdc-sim File: C:/Users/Klaus/Documents/Sistemas Digitais 3/mdc/tb_mdc.vhd Line: 8
-    Info (12023): Found entity 1: tb_mdc File: C:/Users/Klaus/Documents/Sistemas Digitais 3/mdc/tb_mdc.vhd Line: 5
+    Info (12022): Found design unit 1: tb_mdc-sim File: D:/Mestrado/sistemas_digitais/T3/projeto-RTL/mdc/tb_mdc.vhd Line: 8
+    Info (12023): Found entity 1: tb_mdc File: D:/Mestrado/sistemas_digitais/T3/projeto-RTL/mdc/tb_mdc.vhd Line: 5
 Info (12021): Found 2 design units, including 1 entities, in source file datapath.vhd
-    Info (12022): Found design unit 1: mdc_datapath-rtl File: C:/Users/Klaus/Documents/Sistemas Digitais 3/mdc/datapath.vhd Line: 26
-    Info (12023): Found entity 1: mdc_datapath File: C:/Users/Klaus/Documents/Sistemas Digitais 3/mdc/datapath.vhd Line: 5
+    Info (12022): Found design unit 1: mdc_datapath-rtl File: D:/Mestrado/sistemas_digitais/T3/projeto-RTL/mdc/datapath.vhd Line: 26
+    Info (12023): Found entity 1: mdc_datapath File: D:/Mestrado/sistemas_digitais/T3/projeto-RTL/mdc/datapath.vhd Line: 5
 Info (12021): Found 2 design units, including 1 entities, in source file control.vhd
-    Info (12022): Found design unit 1: mdc_control-rtl File: C:/Users/Klaus/Documents/Sistemas Digitais 3/mdc/control.vhd Line: 24
-    Info (12023): Found entity 1: mdc_control File: C:/Users/Klaus/Documents/Sistemas Digitais 3/mdc/control.vhd Line: 5
-Info (12127): Elaborating entity "mdc_top" for the top level hierarchy
-Info (12128): Elaborating entity "mdc_datapath" for hierarchy "mdc_datapath:u_datapath" File: C:/Users/Klaus/Documents/Sistemas Digitais 3/mdc/top_mdc.vhd Line: 33
-Info (12128): Elaborating entity "mdc_control" for hierarchy "mdc_control:u_control" File: C:/Users/Klaus/Documents/Sistemas Digitais 3/mdc/top_mdc.vhd Line: 50
+    Info (12022): Found design unit 1: mdc_control-rtl File: D:/Mestrado/sistemas_digitais/T3/projeto-RTL/mdc/control.vhd Line: 24
+    Info (12023): Found entity 1: mdc_control File: D:/Mestrado/sistemas_digitais/T3/projeto-RTL/mdc/control.vhd Line: 5
+Info (12127): Elaborating entity "top_mdc" for the top level hierarchy
+Info (12128): Elaborating entity "mdc_datapath" for hierarchy "mdc_datapath:u_datapath" File: D:/Mestrado/sistemas_digitais/T3/projeto-RTL/mdc/top_mdc.vhd Line: 33
+Info (12128): Elaborating entity "mdc_control" for hierarchy "mdc_control:u_control" File: D:/Mestrado/sistemas_digitais/T3/projeto-RTL/mdc/top_mdc.vhd Line: 50
 Info (286030): Timing-Driven Synthesis is running
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
@@ -327,9 +327,9 @@ Info (21057): Implemented 61 device resources after synthesis - the final resour
     Info (21059): Implemented 9 output pins
     Info (21061): Implemented 33 logic cells
 Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 1 warning
-    Info: Peak virtual memory: 4905 megabytes
-    Info: Processing ended: Mon Nov 10 20:04:47 2025
-    Info: Elapsed time: 00:00:05
-    Info: Total CPU time (on all processors): 00:00:09
+    Info: Peak virtual memory: 4894 megabytes
+    Info: Processing ended: Tue Nov 11 19:37:54 2025
+    Info: Elapsed time: 00:00:07
+    Info: Total CPU time (on all processors): 00:00:14
 
 
